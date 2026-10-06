@@ -1,0 +1,1199 @@
+﻿/* ============================================================
+   OBSIDIAN. Dark industrial cinematic for AGC.
+   Tokens
+   ============================================================ */
+:root{
+  --bg:#0E0E0E;
+  --bg-2:#161616;
+  --hairline:#2A2A2A;
+  --gridline:#1D1D1D;
+  --ink:#F5F5F5;
+  --ink-soft:#BDBDBD;
+  --muted:#9A9A9A;
+  --red:#E12500;
+  --red-deep:#B81E00;
+  --font-display:'Anton', sans-serif;
+  --font-body:'Archivo', sans-serif;
+  --pad-x:clamp(20px, 4.5vw, 60px);
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--red);color:#fff;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:1px;}
+
+/* type helpers */
+.display{
+  font-family:var(--font-display);
+  font-weight:400;
+  text-transform:uppercase;
+  line-height:.9;
+  letter-spacing:-0.01em;
+}
+.label{
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.container{max-width:1280px;margin-inline:auto;padding-inline:var(--pad-x);}
+
+/* skip link */
+.skip-link{
+  position:fixed;top:-60px;left:16px;z-index:100;
+  background:var(--red);color:#fff;padding:10px 18px;
+  font-weight:600;font-size:14px;transition:top .2s var(--ease-out);
+}
+.skip-link:focus-visible{top:12px;}
+
+/* layers */
+.scene-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;filter:brightness(1.18) contrast(1.1);}
+main, .site-footer{position:relative;z-index:1;}
+header.site-nav{z-index:50;}
+
+/* film grain, CSS only */
+.grain{
+  position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.02;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* red scroll progress */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:70;
+  background:var(--red);transform:scaleX(0);transform-origin:left center;
+}
+
+/* technical drawing grid texture */
+.grid-bg{
+  background-image:
+    repeating-linear-gradient(0deg, var(--gridline) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(90deg, var(--gridline) 0 1px, transparent 1px 72px);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px var(--pad-x);
+  background:transparent;border-bottom:1px solid transparent;
+  transition:background .3s var(--ease-out), border-color .3s var(--ease-out);
+}
+.site-nav.scrolled{background:rgba(14,14,14,.97);border-bottom-color:var(--hairline);}
+
+/* SWAP FOR REAL SVG LOGO */
+.logo-lockup{display:flex;align-items:center;min-height:44px;}
+/* Client artwork, white wordmark on the dark surface. Sized by width; the
+   intrinsic width/height on the tag reserves the box so the nav never jumps. */
+.logo-art{width:268px;height:auto;display:block;}
+@media (max-width:767.98px){.logo-art{width:196px;}}
+/* the footer has room for the full stacked group lockup, both wordmarks and all */
+.logo-art--group{width:300px;}
+@media (max-width:767.98px){.logo-art--group{width:250px;}}
+
+.nav-right{display:flex;align-items:center;gap:6px;}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+.nav-links a{
+  display:inline-block;padding:12px 11px;font-size:13.5px;font-weight:600;
+  white-space:nowrap;color:var(--ink);transition:color .15s var(--ease-out);
+}
+.nav-links a:hover{color:var(--red);}
+.btn-nav{
+  display:inline-flex;align-items:center;gap:7px;margin-left:10px;padding:10px 18px;
+  border:1.5px solid var(--red);color:var(--ink);
+  font-size:13.5px;font-weight:600;white-space:nowrap;cursor:pointer;
+  transition:background .2s var(--ease-out), color .2s var(--ease-out);
+}
+.btn-nav:hover{background:var(--red);color:#fff;}
+/* Call now is the quieter of the two header actions: the phone is for people
+   who have already decided, the form is the one we are asking for. */
+.btn-nav--call{border-color:var(--hairline);}
+.btn-nav--call:hover{background:transparent;border-color:var(--red);color:var(--red);}
+.btn-nav--call svg{flex:none;}
+/* Six links plus two buttons stop fitting before the old 768px switch, so the
+   burger takes over earlier rather than letting the header wrap. */
+@media (max-width:1179.98px){
+  .nav-links, .btn-nav{display:none;}
+  .menu-toggle{display:inline-flex;}
+}
+
+.menu-toggle{
+  display:none;width:44px;height:44px;border:0;background:transparent;color:var(--ink);
+  cursor:pointer;align-items:center;justify-content:center;
+}
+.menu-toggle:hover{color:var(--red);}
+
+/* mobile overlay menu */
+.menu-overlay{
+  position:fixed;inset:0;z-index:60;background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad-x);
+  visibility:hidden;opacity:0;transition:opacity .25s var(--ease-out), visibility 0s .25s;
+}
+.menu-overlay.open{visibility:visible;opacity:1;transition:opacity .25s var(--ease-out);}
+.menu-overlay .menu-close{
+  position:absolute;top:14px;right:var(--pad-x);width:44px;height:44px;
+  background:transparent;border:0;color:var(--ink);cursor:pointer;
+}
+.menu-overlay .menu-close:hover{color:var(--red);}
+.menu-overlay ul{list-style:none;}
+.menu-overlay a{
+  font-family:var(--font-display);font-size:2.5rem;text-transform:uppercase;
+  line-height:1.25;display:inline-block;padding:6px 0;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .4s var(--ease-out), transform .4s var(--ease-out), color .15s;
+}
+.menu-overlay a:hover{color:var(--red);}
+.menu-overlay.open a{opacity:1;transform:translateY(0);}
+.menu-overlay.open li:nth-child(1) a{transition-delay:.06s,.06s,0s;}
+.menu-overlay.open li:nth-child(2) a{transition-delay:.12s,.12s,0s;}
+.menu-overlay.open li:nth-child(3) a{transition-delay:.18s,.18s,0s;}
+.menu-overlay.open li:nth-child(4) a{transition-delay:.24s,.24s,0s;}
+.menu-overlay.open li:nth-child(5) a{transition-delay:.3s,.3s,0s;}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;align-items:center;
+  padding-top:90px;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(90deg,
+    rgba(14,14,14,.93) 0%, rgba(14,14,14,.82) 26%, rgba(14,14,14,.4) 44%,
+    rgba(14,14,14,.06) 56%, rgba(14,14,14,0) 64%);
+}
+.hero-inner{position:relative;z-index:2;width:100%;}
+.hero-label{margin-bottom:26px;}
+.hero h1{font-size:clamp(3rem, 9vw, 9rem);}
+.hero h1 .line{display:block;}
+.hero h1 .red{color:var(--red);}
+.hero-sub{max-width:52ch;margin-top:30px;color:var(--ink);font-size:17px;}
+.hero-ctas{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:38px;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--red);color:#fff;border:1.5px solid var(--red);
+  padding:15px 30px;font-family:var(--font-body);font-size:15px;font-weight:700;
+  cursor:pointer;transition:background .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+.btn:hover{background:var(--red-deep);border-color:var(--red-deep);}
+.btn-invert{background:#fff;color:#0E0E0E;border-color:#fff;}
+.btn-invert:hover{background:#E8E8E8;border-color:#E8E8E8;color:#0E0E0E;}
+.ghost-link{
+  display:inline-flex;align-items:center;gap:9px;min-height:44px;
+  font-size:15px;font-weight:600;color:var(--ink);position:relative;
+  transition:color .2s var(--ease-out);
+}
+.ghost-link svg{transition:transform .2s var(--ease-out);}
+.ghost-link:hover{color:var(--red);}
+.ghost-link:hover svg{transform:translateX(4px);}
+
+/* scroll cue */
+.scroll-cue{
+  position:absolute;left:50%;bottom:26px;width:1px;height:52px;
+  background:var(--hairline);overflow:hidden;z-index:2;
+}
+.scroll-cue::after{
+  content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;
+  background:var(--ink);animation:cuePulse 3s var(--ease-out) infinite;
+}
+@keyframes cuePulse{
+  0%{top:-100%;} 40%{top:100%;} 100%{top:100%;}
+}
+
+/* CSS tower fallback (mobile, reduced motion, no JS) */
+.css-tower{
+  display:none;position:absolute;right:-14px;bottom:0;z-index:1;
+  width:min(210px, 44vw);height:min(430px, 52svh);opacity:.34;pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg, var(--hairline) 0 2px, transparent 2px 12.5%),
+    repeating-linear-gradient(90deg, #262626 0 2px, rgba(16,20,24,.9) 2px 20%);
+  border:2px solid var(--hairline);border-bottom:0;border-right:0;
+  -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 32%);
+  mask-image:linear-gradient(180deg, transparent 0%, #000 32%);
+}
+.css-tower::before{
+  content:"";position:absolute;left:-9px;top:68%;bottom:0;width:6px;background:var(--red);
+}
+
+/* ============================================================
+   PROOF STRIP
+   ============================================================ */
+.proof{background:var(--bg);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.proof-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.proof-item{
+  padding:52px 30px;border-left:1px solid var(--hairline);
+}
+.proof-item:first-child{border-left:0;}
+.proof-num{font-size:3rem;display:block;}
+.proof-item .label{margin-top:10px;display:block;}
+
+/* ============================================================
+   THREE MOVEMENTS
+   ============================================================ */
+.movements{position:relative;background:transparent;}
+.act{
+  position:relative;min-height:88svh;display:flex;align-items:center;
+  padding:70px 0;
+}
+.act-grid{
+  display:grid;grid-template-columns:minmax(0,4.4fr) minmax(0,7.6fr);
+  gap:48px;align-items:end;width:100%;
+}
+.act-left{position:relative;z-index:2;}
+.act-kicker{margin-bottom:20px;}
+.act h2{font-size:clamp(3.2rem, 6.6vw, 6.4rem);}
+.act h2 .red{color:var(--red);}
+.act-copy{max-width:44ch;margin-top:26px;color:var(--ink);font-size:17px;position:relative;z-index:2;}
+.act-right{position:relative;z-index:2;align-self:end;}
+.act-img{display:none;margin-top:34px;position:relative;}
+.act-img img{width:100%;height:340px;object-fit:cover;filter:saturate(.55) contrast(1.06);}
+.act-img::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(14,14,14,.85) 0%, rgba(14,14,14,.15) 55%, rgba(14,14,14,.35) 100%);
+}
+/* left scrim so type wins over the 3D scene.
+   It clears by 58% so the tower owns the right side of the frame. */
+.movements::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  /* Narrower and lighter than it was. The tower now sits nearer the middle and
+     is meant to dominate, so the scrim only has to protect the type column on
+     the left rather than veil the whole right half of the frame. */
+  background:linear-gradient(90deg,
+    rgba(14,14,14,.95) 0%, rgba(14,14,14,.82) 17%, rgba(14,14,14,.34) 29%,
+    rgba(14,14,14,.04) 39%, rgba(14,14,14,0) 46%);
+}
+/* pinned mode, applied by JS on desktop only */
+.movements.is-pinned{height:100svh;overflow:hidden;}
+.movements.is-pinned .act{
+  position:absolute;inset:0;min-height:0;height:100%;padding:0;
+}
+.movements.is-pinned .act:not(:first-of-type){opacity:0;visibility:hidden;}
+
+/* ============================================================
+   FLAGSHIP CASE STUDY
+   ============================================================ */
+.flagship{
+  position:relative;min-height:90vh;display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--bg-2);
+}
+.flagship-media{position:absolute;inset:0;}
+.flagship-media img{
+  width:100%;height:118%;object-fit:cover;
+  filter:saturate(.78) contrast(1.05) brightness(.98);
+  will-change:transform;
+}
+.flagship-scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(14,14,14,.95) 0%, rgba(14,14,14,.46) 46%, rgba(14,14,14,.3) 100%);
+}
+.flagship-content{position:relative;z-index:2;width:100%;padding-top:180px;padding-bottom:90px;}
+.flagship h2{font-size:clamp(2.4rem, 5vw, 4.6rem);max-width:14em;}
+.flagship .label{margin-bottom:20px;display:block;}
+.spec-list{list-style:none;margin-top:30px;border-top:1px solid var(--hairline);max-width:560px;}
+.spec-list li{
+  font-weight:500;font-size:15px;letter-spacing:.04em;
+  padding:13px 0;border-bottom:1px solid var(--hairline);color:var(--ink);
+}
+.spec-list li span{color:var(--muted);}
+.underline-link{
+  display:inline-flex;align-items:center;gap:9px;min-height:44px;margin-top:26px;
+  font-weight:700;font-size:15px;position:relative;color:var(--ink);
+}
+.underline-link::after{
+  content:"";position:absolute;left:0;bottom:6px;height:2px;width:100%;
+  background:var(--red);transform:scaleX(0);transform-origin:left center;
+  transition:transform .25s var(--ease-out);
+}
+.underline-link:hover::after{transform:scaleX(1);}
+
+/* ============================================================
+   CAPABILITIES INDEX
+   ============================================================ */
+.capabilities{background:var(--bg);padding:130px 0 110px;}
+.section-head{margin-bottom:56px;}
+.section-head .display{font-size:clamp(2.2rem, 4.5vw, 3.6rem);margin-top:14px;}
+.cap-list{list-style:none;border-top:1px solid var(--hairline);}
+.cap-row{
+  display:flex;align-items:center;gap:26px;
+  padding:26px 4px;border-bottom:1px solid var(--hairline);
+  transition:padding-left .15s var(--ease-out);
+}
+.cap-row:hover{padding-left:16px;}
+.cap-num{
+  font-weight:600;font-size:14px;color:var(--muted);width:34px;flex:0 0 auto;
+  transition:color .15s var(--ease-out);
+}
+.cap-row:hover .cap-num{color:var(--red);}
+.cap-name{font-weight:700;font-size:1.8rem;line-height:1.15;flex:1 1 auto;}
+.cap-row svg{flex:0 0 auto;color:var(--muted);transition:color .15s var(--ease-out), transform .15s var(--ease-out);}
+.cap-row:hover svg{color:var(--red);transform:translate(3px,-3px);}
+
+/* ============================================================
+   GRADE JOURNEY TIMELINE
+   ============================================================ */
+.journey{background:var(--bg-2);padding:120px 0 130px;border-top:1px solid var(--hairline);}
+.rail-wrap{overflow:hidden;margin-top:64px;}
+.rail-track{display:flex;gap:0;width:max-content;}
+.t-node{
+  width:300px;flex:0 0 auto;padding:0 34px 8px 22px;
+  border-left:1px solid var(--hairline);position:relative;
+  scroll-snap-align:start;
+}
+.t-node::before{
+  content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;
+  background:var(--bg-2);border:2px solid var(--muted);
+}
+.t-node.gc1::before{background:var(--red);border-color:var(--red);}
+.t-year{font-size:2.6rem;display:block;}
+.t-badge{
+  display:inline-block;margin-top:14px;padding:5px 12px;
+  border:1px solid var(--hairline);font-size:12px;font-weight:600;letter-spacing:.12em;
+  color:var(--ink-soft);text-transform:uppercase;
+}
+.t-node.gc1 .t-badge{border-color:var(--red);color:var(--red);}
+.t-line{margin-top:14px;font-size:15px;color:var(--ink-soft);max-width:24ch;}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.quotes{background:var(--bg);padding:130px 0 110px;}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:60px;}
+.quote-item{position:relative;border-top:2px solid var(--hairline);padding-top:34px;}
+/* An ember rule that draws across the hairline as the quote arrives, then
+   retires. Invisible by default, so the hairline border IS the base state and
+   this only ever adds to something already legible. */
+.quote-rule{
+  position:absolute;left:0;top:-2px;height:2px;width:100%;
+  background:var(--red);transform-origin:left center;opacity:0;
+}
+.quote-item blockquote p{font-size:1.25rem;line-height:1.55;font-weight:400;}
+/* Every reference letter now shows the client's logo beside the name, so the
+   grid reads as seven organisations rather than seven blocks of text. */
+.quote-item figcaption{margin-top:24px;display:grid;grid-template-columns:auto 1fr;
+  column-gap:16px;row-gap:2px;align-items:center;}
+.quote-logo{grid-row:span 2;width:64px;height:64px;padding:10px;opacity:1;}
+.quote-logo.client-chip--wide{padding:8px;}
+.quote-logo.client-chip--bleed{padding:0;}
+.quote-item figcaption .who{align-self:end;}
+.quote-item figcaption .label{align-self:start;}
+.quote-item .who{font-weight:700;font-size:15px;display:block;}
+.quotes-note{margin-top:56px;color:var(--muted);font-size:14px;}
+
+/* ============================================================
+   CTA BAND
+   ============================================================ */
+.cta-band{
+  background:var(--red);color:#fff;padding:110px 0 120px;
+  position:relative;overflow:hidden;isolation:isolate;
+}
+/* The mark, once, very large and very quiet. One brand moment per page, sat in
+   the corner of the closing band where there is nothing else competing. */
+.cta-band::after{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  right:-2%;top:50%;translate:0 -50%;
+  width:min(210px, 26vw);aspect-ratio:90.8/184.88;
+  background:#fff;opacity:.10;
+  -webkit-mask:url(../brand/mark.svg) center/contain no-repeat;
+  mask:url(../brand/mark.svg) center/contain no-repeat;
+}
+.cta-band > .container{position:relative;z-index:1;}
+.cta-band h2{font-size:clamp(3rem, 8vw, 7.5rem);color:#fff;}
+.cta-band p{margin-top:22px;max-width:44ch;font-size:18px;color:#fff;}
+.cta-band .btn-invert{margin-top:40px;}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{
+  background:var(--bg);border-top:1px solid var(--hairline);
+  position:relative;overflow:hidden;
+}
+/* A tile of the mark at 3.5 percent, which reads as texture rather than as a
+   logo repeated. If you can identify it without leaning in, it is too strong. */
+.site-footer::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:var(--ink-soft);opacity:.035;
+  -webkit-mask:url(../brand/mark.svg) 0 0/34px 69px repeat;
+  mask:url(../brand/mark.svg) 0 0/34px 69px repeat;
+}
+.site-footer > *{position:relative;z-index:1;}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:56px;
+  padding-top:80px;padding-bottom:64px;
+}
+.footer-col .label{display:block;margin-bottom:18px;}
+.footer-col p, .footer-col address{font-style:normal;color:var(--ink-soft);font-size:15px;line-height:1.7;}
+.footer-col ul{list-style:none;}
+.footer-col ul a{
+  display:inline-block;padding:6px 0;font-size:15px;color:var(--ink-soft);
+  transition:color .15s var(--ease-out);
+}
+.footer-col ul a:hover{color:var(--red);}
+.footer-col address a{color:var(--ink-soft);transition:color .15s var(--ease-out);}
+.footer-col address a:hover{color:var(--red);}
+.footer-bottom{
+  border-top:1px solid var(--hairline);
+  padding-top:26px;padding-bottom:30px;
+  display:flex;flex-wrap:wrap;gap:10px 34px;
+  font-size:13px;color:var(--muted);
+}
+
+/* ============================================================
+   CLIENT TICKER
+   ============================================================ */
+.clients{position:relative;z-index:2;background:var(--bg);border-bottom:1px solid var(--hairline);}
+.clients-head{padding:38px 0 20px;}
+.ticker{position:relative;overflow:hidden;border-top:1px solid var(--hairline);}
+/* edge fades so logos enter and leave the strip instead of being cut */
+.ticker::before,.ticker::after{
+  content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none;
+}
+.ticker::before{left:0;background:linear-gradient(90deg, var(--bg) 0%, rgba(14,14,14,0) 100%);}
+.ticker::after{right:0;background:linear-gradient(270deg, var(--bg) 0%, rgba(14,14,14,0) 100%);}
+.ticker-track{display:flex;width:max-content;animation:marquee 46s linear infinite;}
+.ticker:hover .ticker-track,
+.ticker:focus-within .ticker-track{animation-play-state:paused;}
+.ticker-set{display:flex;list-style:none;}
+.ticker-set li{flex:0 0 auto;padding:26px 15px;}
+/* circular tiles: one shape for seven very differently proportioned marks */
+.client-chip{
+  display:flex;align-items:center;justify-content:center;
+  width:132px;height:132px;border-radius:50%;overflow:hidden;
+  padding:22px;background:#F4F4F4;
+  box-shadow:0 0 0 1px rgba(255,255,255,.06);
+  opacity:.92;transition:opacity .3s var(--ease-out), transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
+}
+.client-chip img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;}
+/* a logo that ships on its own coloured tile fills the chip instead of sitting in it */
+.client-chip--bleed{padding:0;}
+.client-chip--bleed img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;}
+/* wide wordmarks need to run closer to the edge or they read as tiny */
+.client-chip--wide{padding:14px;}
+.ticker-set li:hover .client-chip{opacity:1;transform:translateY(-4px);box-shadow:0 0 0 2px var(--red);}
+@keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1023.98px){
+  .cap-name{font-size:1.4rem;}
+  .quote-grid{gap:44px;}
+}
+@media (max-width:767.98px){
+  .nav-links, .btn-nav{display:none;}
+  .menu-toggle{display:inline-flex;}
+  .scene-canvas{display:none;}
+  .css-tower{display:block;}
+  .act-img{display:block;}
+  .act{min-height:0;padding:56px 0;}
+  .act-grid{grid-template-columns:1fr;gap:0;}
+  .movements::before{display:none;}
+  .proof-row{grid-template-columns:1fr 1fr;}
+  .proof-item{padding:34px 22px;border-top:1px solid var(--hairline);}
+  .proof-item:nth-child(-n+2){border-top:0;}
+  .proof-item:nth-child(3){border-left:0;}
+  .quote-grid{grid-template-columns:1fr;gap:50px;}
+  .footer-grid{grid-template-columns:1fr;gap:40px;padding-top:60px;}
+  .rail-wrap{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:14px;}
+  .t-node{width:255px;}
+  .flagship-content{padding-top:220px;}
+  .hero{padding-top:110px;padding-bottom:80px;}
+  .client-chip{width:104px;height:104px;padding:16px;}
+  .client-chip--wide{padding:11px;}
+  .ticker-set li{padding:20px 10px;}
+  .ticker::before,.ticker::after{width:52px;}
+}
+
+/* no-JS fallbacks: show static act imagery and CSS tower */
+.no-js .act-img{display:block;}
+.no-js .css-tower{display:block;}
+.no-js .scene-canvas{display:none;}
+
+/* ============================================================
+   REDUCED MOTION: complete static experience
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation:none !important;transition:none !important;}
+  /* the strip becomes a static wrapped logo wall rather than a cropped row */
+  .ticker-track{width:100%;flex-wrap:wrap;}
+  .ticker-set{flex-wrap:wrap;justify-content:center;width:100%;}
+  .ticker-set[aria-hidden="true"]{display:none;}
+  .ticker::before,.ticker::after{display:none;}
+  .scene-canvas{display:none;}
+  .css-tower{display:block;}
+  .act-img{display:block;}
+  .scroll-cue{display:none;}
+}
+/* ============================================================
+   INTERIOR PAGES
+   Everything below is added for the pages beyond the homepage.
+   ============================================================ */
+
+/* active state in the primary nav */
+.nav-links a.is-active{color:var(--paper);}
+.nav-links a.is-active::after{transform:scaleX(1);}
+.menu-overlay a.is-active{color:var(--red);}
+
+/* ---------- page head: the interior hero band ---------- */
+.page-head{
+  position:relative;padding-top:190px;padding-bottom:78px;
+  border-bottom:1px solid var(--hairline);overflow:hidden;
+}
+.page-head::after{
+  content:"";position:absolute;right:-90px;bottom:-140px;width:520px;height:520px;
+  border:1.5px solid rgba(255,255,255,.05);transform:rotate(45deg);pointer-events:none;
+}
+.page-head .crumb{margin-bottom:22px;}
+.page-head .crumb a{color:var(--muted);}
+.page-head .crumb a:hover{color:var(--red);}
+.page-head h1{font-size:clamp(2.6rem, 6.5vw, 5.4rem);max-width:16ch;}
+.page-head .page-dek{
+  max-width:56ch;margin-top:26px;color:var(--ink);font-size:18px;position:relative;z-index:2;
+}
+.page-head .page-rule{width:82px;height:3px;background:var(--red);margin-top:34px;}
+
+/* ---------- generic editorial section ---------- */
+.sec{padding:96px 0;}
+.sec-tight{padding:64px 0;}
+.sec-line{border-top:1px solid var(--hairline);}
+.sec-head{margin-bottom:56px;}
+.sec-head h2{font-size:clamp(2rem, 4.4vw, 3.4rem);max-width:20ch;}
+.sec-head .sec-dek{max-width:60ch;margin-top:20px;color:var(--muted);font-size:17px;}
+.sec-head .label{margin-bottom:18px;}
+
+/* ---------- two column editorial ---------- */
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start;}
+.split-narrow{grid-template-columns:minmax(0,4fr) minmax(0,8fr);}
+.prose p{color:var(--ink);font-size:17px;line-height:1.75;}
+.prose p + p{margin-top:20px;}
+.prose strong{color:var(--paper);font-weight:600;}
+
+/* ---------- numbered feature list ---------- */
+.feature-list{list-style:none;}
+.feature-list li{
+  display:grid;grid-template-columns:64px minmax(0,1fr);gap:24px;
+  padding:30px 0;border-top:1px solid var(--hairline);
+}
+.feature-list li:last-child{border-bottom:1px solid var(--hairline);}
+.feature-list .f-num{
+  font-family:var(--font-display);font-size:1.5rem;color:var(--red);line-height:1;padding-top:4px;
+}
+.feature-list h3{font-size:1.35rem;margin-bottom:10px;}
+.feature-list p{color:var(--muted);font-size:15.5px;max-width:62ch;}
+
+/* ---------- service detail block ---------- */
+.svc{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;
+  padding:70px 0;border-top:1px solid var(--hairline);align-items:start;
+}
+.svc-index{display:flex;align-items:baseline;gap:16px;margin-bottom:20px;}
+.svc-index .n{font-family:var(--font-display);font-size:1.1rem;color:var(--red);}
+.svc h2{font-size:clamp(1.7rem, 3.2vw, 2.6rem);}
+.svc-body p{color:var(--ink);font-size:16.5px;line-height:1.72;}
+.svc-body p + p{margin-top:18px;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px;list-style:none;}
+.svc-tags li{
+  border:1px solid var(--hairline);padding:8px 14px;font-size:12.5px;color:var(--muted);
+  letter-spacing:.05em;text-transform:uppercase;
+}
+
+/* ---------- capability grid (compact, for the all-types list) ---------- */
+.cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;
+  border-top:1px solid var(--hairline);border-left:1px solid var(--hairline);}
+.cap-grid li{padding:26px 24px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.cap-grid .cg-name{display:block;font-weight:600;font-size:16px;color:var(--paper);}
+.cap-grid .cg-note{display:block;margin-top:7px;font-size:14px;color:var(--muted);}
+
+/* ---------- project cards ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;}
+.proj-card{
+  position:relative;display:block;background:var(--bg-2);border:1px solid var(--hairline);
+  transition:border-color .25s var(--ease-out), transform .25s var(--ease-out);
+}
+.proj-card:hover{border-color:var(--red);transform:translateY(-4px);}
+.proj-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141414;}
+.proj-media img{
+  width:100%;height:100%;object-fit:cover;filter:saturate(.5) contrast(1.06) brightness(.82);
+  transition:transform .6s var(--ease-out), filter .4s var(--ease-out);
+}
+.proj-card:hover .proj-media img{transform:scale(1.04);filter:saturate(.75) contrast(1.08) brightness(.95);}
+.proj-flag{
+  position:absolute;left:0;top:0;background:var(--red);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:8px 14px;
+}
+.proj-body{padding:28px 28px 32px;}
+.proj-client{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.proj-card h3{font-size:1.45rem;margin:12px 0 14px;line-height:1.15;}
+.proj-card p{color:var(--muted);font-size:15px;}
+.proj-meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px;padding-top:20px;border-top:1px solid var(--hairline);}
+.proj-meta div{display:flex;flex-direction:column;gap:5px;}
+.proj-meta .pm-k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.proj-meta .pm-v{font-family:var(--font-display);font-size:1.15rem;color:var(--paper);}
+
+/* ---------- fact table ---------- */
+.facts{width:100%;border-collapse:collapse;}
+.facts th,.facts td{text-align:left;padding:18px 0;border-bottom:1px solid var(--hairline);vertical-align:top;}
+.facts th{
+  width:230px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;
+}
+.facts td{color:var(--ink);font-size:16px;}
+
+/* ---------- organisational structure ----------
+   Positions only, no names (Eyoel, 2026-09-28: the named team section was
+   replaced by the client's org chart). Nested lists carry the hierarchy, so a
+   screen reader hears the same tree the connector lines draw.
+
+   The connectors are the standard CSS tree: each child draws the half rail on
+   its own side plus the drop into its box, and the parent list draws the stem
+   out of the parent. An only child draws the stem alone, which is what makes
+   a chain of single reports look like a straight line.
+   ------------------------------------------------------------------------ */
+.org{--org-line:#3A3634;--org-drop:26px;margin-top:8px;overflow-x:auto;padding-bottom:8px;}
+.org ul{list-style:none;}
+.org-spine{display:flex;justify-content:center;min-width:900px;}
+.org-spine li{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  padding:var(--org-drop) 14px 0;
+}
+.org-spine > li{padding-top:0;}
+/* the stem out of a parent, into its children */
+.org-spine li > ul{
+  position:relative;display:flex;justify-content:center;
+  padding-top:var(--org-drop);
+}
+.org-spine li > ul::before{
+  content:"";position:absolute;top:0;left:50%;width:1px;height:var(--org-drop);
+  background:var(--org-line);
+}
+/* each child: half the rail on its own side, then the drop into its box */
+.org-spine li::before,
+.org-spine li::after{
+  content:"";position:absolute;top:0;width:50%;height:var(--org-drop);
+  border-top:1px solid var(--org-line);
+}
+.org-spine li::before{right:50%;}
+.org-spine li::after{left:50%;border-left:1px solid var(--org-line);}
+.org-spine > li::before,.org-spine > li::after{display:none;}
+/* the outer halves of the rail belong to nobody */
+.org-spine li:first-child::before{border-top-color:transparent;}
+.org-spine li:last-child::after{border-top-color:transparent;}
+/* an only child needs the drop, not the rail */
+.org-spine li:only-child::before{display:none;}
+.org-spine li:only-child::after{left:50%;width:0;border-top:0;}
+
+.org-node{
+  display:block;padding:13px 22px;border:1px solid var(--hairline);background:#141312;
+  font-size:14.5px;font-weight:600;color:var(--ink);text-align:center;white-space:nowrap;
+}
+.org-node--lead{border-color:var(--red);font-size:15.5px;}
+.org-node--dept{border-top:2px solid var(--red);text-transform:uppercase;
+  letter-spacing:.08em;font-size:13px;}
+.org-node--mark{background:#1D1B19;}
+
+@media (max-width:767.98px){
+  /* the chart becomes an indented tree: it reads top to bottom on a phone
+     instead of scrolling sideways. */
+  .org{overflow-x:visible;}
+  .org-spine{min-width:0;display:block;}
+  .org-spine li{display:block;padding:0;}
+  /* seven levels deep, so the indent per level has to stay small or the last
+     box has no width left on a 390px screen */
+  .org-spine li > ul{display:block;padding-top:8px;margin-top:8px;
+    border-left:1px solid var(--org-line);padding-left:11px;}
+  .org-spine li::before,.org-spine li::after,.org-spine li > ul::before{display:none;}
+  .org-spine li + li{margin-top:8px;}
+  .org-node{text-align:left;white-space:normal;padding:10px 13px;font-size:13.5px;}
+  .org-node--dept{font-size:12px;}
+}
+
+/* ---------- values ---------- */
+.values{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;list-style:none;}
+.values li{border-top:2px solid var(--red);padding-top:22px;}
+.values h3{font-size:1.05rem;margin-bottom:10px;}
+.values p{color:var(--muted);font-size:14.5px;}
+
+/* ---------- workflow steps ---------- */
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));list-style:none;
+  border-top:1px solid var(--hairline);border-left:1px solid var(--hairline);}
+.flow li{padding:26px 18px 30px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
+.flow .fl-n{font-family:var(--font-display);font-size:1.3rem;color:var(--red);}
+.flow h3{font-size:14.5px;margin-top:14px;line-height:1.3;}
+
+/* ---------- blog and newsletter ----------
+   Added 2026-09-28. The article list is a rule separated stack rather than a
+   card grid: these are pieces of writing, not products. */
+.post-list{list-style:none;border-top:1px solid var(--hairline);}
+/* the list gets a thumbnail beside the text, the article gets full width figures */
+.post-thumb{display:block;overflow:hidden;background:#141414;}
+.post-thumb img{display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s var(--ease-out);}
+.post-link:hover .post-thumb img{transform:scale(1.03);}
+.post-text{display:block;}
+.post-fig{margin:34px 0;}
+.post-fig--hero{margin:0 0 40px;}
+.post-fig picture{display:block;background:#141414;}
+.post-fig img{display:block;width:100%;height:auto;}
+.post-fig figcaption{margin-top:12px;font-size:14px;color:var(--muted);max-width:62ch;}
+.post-col{max-width:900px;}
+.post-by{color:var(--muted);}
+.post-item{border-bottom:1px solid var(--hairline);}
+.post-link{display:grid;grid-template-columns:300px minmax(0,1fr);gap:34px;align-items:start;
+  padding:34px 0;transition:background .2s var(--ease-out);}
+.post-link .post-thumb{aspect-ratio:16/9;}
+.post-link:hover{background:rgba(255,255,255,.02);}
+.post-meta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.post-read{color:var(--red);}
+.post-title{display:block;font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.1rem);
+  line-height:1.1;text-transform:uppercase;color:var(--paper);max-width:22ch;}
+.post-link:hover .post-title{color:var(--red);}
+.post-dek{display:block;margin-top:14px;max-width:62ch;color:var(--ink-soft);font-size:17px;}
+.post-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.post-tag{border:1px solid var(--hairline);padding:5px 12px;font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.post-empty{padding:34px 0;border-bottom:1px solid var(--hairline);color:var(--ink-soft);}
+.post-body{max-width:68ch;}
+.post-body h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin:38px 0 14px;color:var(--paper);}
+.post-body p + p{margin-top:18px;}
+
+.news-form{max-width:520px;}
+.news-row{display:flex;gap:12px;margin-top:10px;}
+.news-row input{
+  flex:1;min-width:0;background:transparent;color:var(--paper);border:1px solid var(--hairline);
+  padding:14px 16px;font-family:var(--font-body);font-size:16px;min-height:52px;
+  transition:border-color .2s var(--ease-out);
+}
+.news-row input:focus{outline:none;border-color:var(--red);}
+.news-row .btn{white-space:nowrap;}
+.news-note{margin-top:14px;color:var(--muted);font-size:13.5px;}
+@media (max-width:767.98px){
+  .post-link{grid-template-columns:1fr;gap:18px;}
+  .post-fig{margin:26px 0;}
+}
+@media (max-width:600px){
+  .news-row{flex-direction:column;}
+  .news-row .btn{justify-content:center;}
+}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:70px;align-items:start;}
+.field{margin-bottom:22px;}
+.field label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;color:var(--paper);border:1px solid var(--hairline);
+  padding:14px 16px;font-family:var(--font-body);font-size:16px;min-height:48px;
+  transition:border-color .2s var(--ease-out);
+}
+.field textarea{min-height:132px;resize:vertical;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red);}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 22px,calc(100% - 14px) 22px;background-size:6px 6px;background-repeat:no-repeat;}
+.field .req{color:var(--red);}
+.form-note{margin-top:18px;color:var(--muted);font-size:13.5px;}
+.contact-block{border-top:1px solid var(--hairline);padding:26px 0;}
+.contact-block .label{display:block;margin-bottom:12px;}
+.contact-block a{color:var(--paper);font-size:17px;}
+.contact-block a:hover{color:var(--red);}
+.contact-block p{color:var(--ink);font-size:16px;line-height:1.6;}
+
+/* modal, blocking, with an OK button. Never a toast. */
+.modal-back{
+  position:fixed;inset:0;background:rgba(6,6,6,.82);z-index:120;
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.modal-back.open{display:flex;}
+.modal{
+  background:var(--bg-2);border:1px solid var(--hairline);max-width:460px;width:100%;padding:38px 36px 32px;
+}
+.modal h2{font-size:1.6rem;margin-bottom:14px;}
+.modal p{color:var(--ink);font-size:16px;line-height:1.6;}
+.modal .btn{margin-top:26px;}
+
+/* ---------- pending data chip ---------- */
+.confirm{
+  display:inline-block;background:rgba(225,37,0,.12);border:1px solid rgba(225,37,0,.5);
+  color:#FF7A5C;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 9px;vertical-align:middle;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1023.98px){
+  .cap-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .values{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;}
+  .flow{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .split,.split-narrow{grid-template-columns:1fr;gap:36px;}
+  .svc{grid-template-columns:1fr;gap:26px;}
+  .contact-grid{grid-template-columns:1fr;gap:52px;}
+}
+@media (max-width:767.98px){
+  .page-head{padding-top:140px;padding-bottom:56px;}
+  .page-head::after{display:none;}
+  .sec{padding:64px 0;}
+  .sec-head{margin-bottom:38px;}
+  .proj-grid{grid-template-columns:1fr;gap:26px;}
+  .cap-grid,.values,.flow{grid-template-columns:1fr;}
+  .feature-list li{grid-template-columns:44px minmax(0,1fr);gap:16px;}
+  .facts th{width:auto;display:block;border-bottom:0;padding-bottom:6px;}
+  .facts td{display:block;padding-top:0;}
+}
+@media (prefers-reduced-motion: reduce){
+  .proj-card:hover{transform:none;}
+  .proj-card:hover .proj-media img{transform:none;}
+}
+
+/* flagship intro copy, used on the projects page hero block */
+.flagship-copy{max-width:54ch;margin-top:26px;color:var(--ink);font-size:17.5px;line-height:1.7;}
+.flagship-content .ghost-link{margin-top:30px;}
+
+/* ============================================================
+   HERO BLUEPRINT
+   The construction-sequence drawing ported from the Ledger option and
+   re-lit for the dark surface. It draws foundation, structure, facade,
+   fins and dimensions as you scroll, then the real Megenagna facade
+   resolves inside the outline.
+   ============================================================ */
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:56px;align-items:center;width:100%;
+}
+.hero-fig{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;}
+.hero-fig svg{width:100%;height:auto;max-height:calc(100svh - 210px);}
+
+.bp{overflow:visible;}
+.bp .s{stroke:#DFE3E7;stroke-opacity:.58;stroke-width:1;fill:none;vector-effect:non-scaling-stroke;}
+.bp .s2{stroke:#F4F6F8;stroke-opacity:.95;stroke-width:1.5;fill:none;vector-effect:non-scaling-stroke;}
+.bp .sd{stroke:#DFE3E7;stroke-opacity:.32;stroke-width:1;fill:none;stroke-dasharray:5 5;vector-effect:non-scaling-stroke;}
+.bp .sr{stroke:var(--red);stroke-width:1.6;fill:none;vector-effect:non-scaling-stroke;}
+.bp .sh{stroke:#FFFFFF;stroke-opacity:.11;stroke-width:1.25;fill:none;}
+.bp text{
+  font-family:var(--font-body);font-weight:600;font-size:10px;letter-spacing:.08em;
+  fill:#E4E7EA;opacity:.78;
+}
+.bp .tb-text{font-size:9.5px;text-transform:uppercase;}
+#bp-photo image{opacity:1;filter:saturate(.72) contrast(1.04) brightness(.92);}
+.bp.bp-armed #bp-photo image{opacity:0;}
+@media (prefers-reduced-motion: no-preference){
+  .bp.bp-done #bp-blink{animation:bpBlink 6s ease-in-out infinite;}
+}
+@keyframes bpBlink{0%,86%,100%{stroke-opacity:.58;} 92%{stroke-opacity:.16;}}
+
+/* The 3D tower belongs to the movements section now that the hero carries the
+   drawing. The hero paints its own background over the fixed canvas so the two
+   never compete in one viewport. No JS, nothing to desynchronise. */
+.hero{background:var(--bg);}
+
+@media (max-width:1023.98px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .hero-fig{order:2;max-width:420px;}
+  .hero-fig svg{max-height:none;}
+}
+@media (max-width:767.98px){
+  .hero-fig{max-width:100%;margin-inline:auto;}
+  .bp text{font-size:12px;}
+}
+
+/* ============================================================
+   SERVICES PAGE
+   ============================================================ */
+/* The ten scopes, named inside the page head as the mark fills. Default state
+   is fully visible: JS hides them only when it is about to animate them, so
+   no-JS, reduced motion and mobile all read a plain list. */
+.svc-reveal-label{margin:34px 0 14px;}
+.svc-reveal-list{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:2px 34px;list-style:none;max-width:660px;
+}
+.svc-reveal-list a{
+  display:flex;align-items:baseline;gap:12px;padding:7px 0;
+  font-size:15px;font-weight:600;color:var(--ink-soft);
+  transition:color .2s var(--ease-out);
+}
+.svc-reveal-list a:hover,.svc-reveal-list a:focus-visible{color:var(--paper);}
+.svc-r-n{font-family:var(--font-display);font-size:12px;color:var(--red);letter-spacing:.06em;}
+.svc-reveal-list a:hover .svc-r-name{border-bottom:1px solid var(--red);}
+@media (max-width:600px){
+  .svc-reveal-list{grid-template-columns:1fr;max-width:none;}
+}
+
+/* a service block that carries a photograph in its left column */
+.svc-fig{margin-top:28px;}
+.svc-fig picture{display:block;overflow:hidden;background:#141414;}
+.svc-fig img{
+  width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;
+  filter:saturate(.62) contrast(1.05) brightness(.9);
+  transition:filter .4s var(--ease-out), transform .5s var(--ease-out);
+}
+.svc:hover .svc-fig img{filter:saturate(.85) contrast(1.05) brightness(1);transform:scale(1.02);}
+.svc-fig figcaption{
+  margin-top:12px;font-size:12.5px;color:var(--muted);line-height:1.5;
+  border-left:2px solid var(--red);padding-left:12px;
+}
+/* marks a stock placeholder that still needs real AGC photography */
+.fig-ph{
+  display:inline-block;margin-left:6px;padding:2px 7px;
+  border:1px solid rgba(225,37,0,.5);background:rgba(225,37,0,.1);
+  color:#FF7A5C;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+@media (prefers-reduced-motion: reduce){
+  .svc:hover .svc-fig img{transform:none;}
+}
+.svc-body p a,.sec-dek a,.prose a{
+  color:var(--paper);text-decoration:underline;text-underline-offset:3px;
+  text-decoration-color:var(--red);text-decoration-thickness:1.5px;
+  transition:color .2s var(--ease-out);
+}
+.svc-body p a:hover,.sec-dek a:hover,.prose a:hover{color:var(--red);}
+
+/* capability rows on the homepage now lead to the matching service */
+a.cap-row{cursor:pointer;}
+
+/* ============================================================
+   INDIVIDUAL SERVICE PAGES
+   ============================================================ */
+.svc-head{position:relative;padding-top:200px;padding-bottom:86px;overflow:hidden;}
+.svc-head::after{display:none;}
+.svc-head-media{position:absolute;inset:0;z-index:0;}
+.svc-head-media img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.5) contrast(1.06) brightness(.82);
+}
+.svc-head-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg, rgba(14,14,14,.95) 0%, rgba(14,14,14,.74) 42%, rgba(14,14,14,.24) 100%),
+    linear-gradient(0deg, rgba(14,14,14,.9) 0%, rgba(14,14,14,.3) 60%, rgba(14,14,14,.72) 100%);
+}
+.svc-head-inner{position:relative;z-index:2;}
+.svc-head-kicker{color:var(--red);margin-bottom:16px;}
+.svc-head h1{font-size:clamp(2.5rem, 6vw, 5rem);}
+
+/* the numbered "how" list on a service page */
+.how-list{list-style:none;counter-reset:how;margin-top:28px;}
+.how-list li{
+  counter-increment:how;position:relative;padding:14px 0 14px 46px;
+  border-top:1px solid var(--hairline);color:var(--ink-soft);font-size:15.5px;line-height:1.6;
+}
+.how-list li:last-child{border-bottom:1px solid var(--hairline);}
+.how-list li::before{
+  content:counter(how,decimal-leading-zero);position:absolute;left:0;top:14px;
+  font-family:var(--font-display);font-size:.95rem;color:var(--red);
+}
+.svc-proof{
+  border-left:2px solid var(--red);padding-left:18px;margin-top:26px;
+}
+.svc-proof strong{color:var(--paper);font-weight:500;}
+.svc-photo-note{
+  margin-top:22px;font-size:12.5px;color:var(--muted);
+  border:1px solid var(--hairline);display:inline-block;padding:8px 14px;
+}
+
+/* related services */
+.rel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.rel-card{
+  display:flex;align-items:center;gap:14px;
+  border:1px solid var(--hairline);padding:24px 22px;min-height:44px;
+  transition:border-color .2s var(--ease-out), transform .2s var(--ease-out);
+}
+.rel-card:hover{border-color:var(--red);transform:translateY(-3px);}
+.rel-card .rel-n{font-family:var(--font-display);font-size:1rem;color:var(--red);}
+.rel-card .rel-name{flex:1;font-weight:600;font-size:16px;color:var(--paper);}
+.rel-card svg{color:var(--muted);flex:0 0 auto;}
+.rel-card:hover svg{color:var(--red);}
+
+/* the services hub becomes a set of cards that lead to the eight pages */
+.svc-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;}
+.svc-card{
+  display:block;background:var(--bg-2);border:1px solid var(--hairline);
+  transition:border-color .25s var(--ease-out), transform .25s var(--ease-out);
+}
+.svc-card:hover{border-color:var(--red);transform:translateY(-4px);}
+.svc-card-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:#141414;}
+.svc-card-media img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.45) contrast(1.06) brightness(.74);
+  transition:transform .6s var(--ease-out), filter .4s var(--ease-out);
+}
+.svc-card:hover .svc-card-media img{transform:scale(1.04);filter:saturate(.7) brightness(.92);}
+.svc-card-n{
+  position:absolute;left:0;top:0;background:var(--red);color:#fff;
+  font-family:var(--font-display);font-size:.95rem;padding:8px 14px;
+}
+.svc-card-body{padding:26px 26px 30px;}
+.svc-card h3{font-size:1.4rem;margin-bottom:12px;line-height:1.15;}
+.svc-card p{color:var(--muted);font-size:15px;}
+.svc-card .svc-card-go{
+  display:inline-flex;align-items:center;gap:9px;margin-top:20px;
+  font-size:14px;font-weight:600;color:var(--paper);
+}
+.svc-card:hover .svc-card-go{color:var(--red);}
+
+@media (max-width:1023.98px){
+  .rel-grid{grid-template-columns:1fr;}
+  .svc-cards{grid-template-columns:1fr;gap:22px;}
+}
+@media (max-width:767.98px){
+  .svc-head{padding-top:150px;padding-bottom:60px;}
+  .svc-head-scrim{background:linear-gradient(0deg, rgba(14,14,14,.96) 0%, rgba(14,14,14,.72) 55%, rgba(14,14,14,.88) 100%);}
+}
+@media (prefers-reduced-motion: reduce){
+  .svc-card:hover,.rel-card:hover{transform:none;}
+  .svc-card:hover .svc-card-media img{transform:none;}
+}
+
+/* Honeypot. Off canvas rather than display:none, which bots increasingly detect. */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+
+/* ============================================================
+   SECTION BACKGROUND PHOTOGRAPHY (service pages)
+   A photograph behind a content section, held down hard by a scrim so body
+   copy keeps its contrast. The scrim is not decoration: over a raw photo the
+   17px body text drops well under 4.5:1 in the bright areas.
+   ============================================================ */
+.sec-photo{position:relative;overflow:hidden;isolation:isolate;}
+.sec-photo > .container{position:relative;z-index:2;}
+.sec-photo-media{position:absolute;inset:0;z-index:0;}
+.sec-photo-media picture{display:block;height:100%;}
+.sec-photo-media img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  filter:saturate(.42) contrast(1.06) brightness(.70);
+}
+.sec-photo--low .sec-photo-media img{object-position:center 78%;}
+.sec-photo-scrim{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(14,14,14,.96) 0%, rgba(14,14,14,.80) 22%,
+                            rgba(14,14,14,.78) 78%, rgba(14,14,14,.96) 100%),
+    linear-gradient(90deg, rgba(14,14,14,.90) 0%, rgba(14,14,14,.66) 45%,
+                           rgba(14,14,14,.54) 100%);
+}
+/* the grid overlay still reads on top of the photograph, just quieter */
+.sec-photo.grid-bg::before{opacity:.35;}
+@media (max-width:767.98px){
+  /* one more stop of darkening: small screens put type right over the busiest
+     part of the frame and there is no room to move it off. */
+  .sec-photo-media img{filter:saturate(.34) contrast(1.06) brightness(.52);}
+}
+@media (prefers-reduced-motion: no-preference){
+  .sec-photo-media img{will-change:transform;}
+}
+
+
+/* Full reference letters (projects page). A whole letter at the pull quote
+   size would be a wall, so the type steps down and the measure is capped at a
+   readable line length. */
+.quote-item--full blockquote p{
+  font-size:1.02rem;line-height:1.72;color:var(--ink-soft);max-width:64ch;
+}
+.quote-item--full .who{color:var(--paper);}
+.quote-item--full figcaption{margin-top:20px;}
+
+
+/* ============================================================
+   LEGAL PAGES (terms, privacy)
+   Long form prose. One column, capped measure, generous leading. The rest of
+   the site is display type over photography; these pages are the opposite and
+   should read like a document.
+   ============================================================ */
+.legal{max-width:74ch;}
+.legal h2{
+  font-family:var(--font-display);font-weight:400;letter-spacing:.01em;
+  font-size:clamp(1.35rem,2.6vw,1.85rem);line-height:1.15;
+  margin:52px 0 16px;padding-top:26px;border-top:1px solid var(--hairline);
+}
+.legal h2:first-of-type{margin-top:10px;}
+.legal h3{font-size:1.02rem;font-weight:700;margin:26px 0 10px;color:var(--paper);}
+.legal p{color:var(--ink-soft);font-size:16.5px;line-height:1.75;}
+.legal p + p{margin-top:16px;}
+.legal strong{color:var(--paper);font-weight:600;}
+.legal a{color:var(--paper);text-decoration:underline;text-underline-offset:3px;
+  text-decoration-color:var(--red);transition:color .18s var(--ease-out);}
+.legal a:hover,.legal a:focus-visible{color:var(--red);}
+.legal-meta{
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.legal-list{margin:16px 0 0;padding-left:0;list-style:none;}
+.legal-list li{
+  position:relative;padding-left:26px;margin-bottom:12px;
+  color:var(--ink-soft);font-size:16.5px;line-height:1.7;
+}
+.legal-list li::before{
+  content:"";position:absolute;left:0;top:7px;width:9px;height:18px;
+  background:var(--red);
+  -webkit-mask:url(../brand/mark.svg) center/contain no-repeat;
+  mask:url(../brand/mark.svg) center/contain no-repeat;
+}
+.nowrap{white-space:nowrap;}
+
+@media print{
+  .cta-band::after,.site-footer::before{display:none;}
+}
+
+
+/* ============================================================
+   INTERIOR PAGE HEAD MARK
+   The mark as a drawn outline that fills with ember on scroll. It reads as a
+   technical drawing resolving into the finished thing, which is the same idea
+   the homepage blueprint runs on, at a fraction of the weight.
+
+   The DEFAULT state is filled. JS empties it and scrubs it back, so no-JS,
+   reduced-motion and mobile all get a solid mark rather than an empty outline.
+   ============================================================ */
+.head-mark{
+  position:absolute;z-index:1;pointer-events:none;
+  right:clamp(20px, 6vw, 118px);
+  top:50%;translate:0 -50%;
+  /* 80% of the head's own height, so it scales with each page rather than
+     being one fixed size across heads that are three lines tall and one line
+     tall. Width follows from the artwork's ratio; the cap stops it crowding
+     the headline on a short wide head. */
+  height:80%;width:auto;aspect-ratio:90.8/184.88;
+  max-width:min(268px, 22vw);
+}
+.head-mark span{position:absolute;inset:0;display:block;}
+.head-mark-line{
+  background:var(--red);opacity:.42;
+  -webkit-mask:url(../brand/mark-outline.svg) center/contain no-repeat;
+  mask:url(../brand/mark-outline.svg) center/contain no-repeat;
+}
+.head-mark-fill{
+  background:var(--red);
+  -webkit-mask:url(../brand/mark.svg) center/contain no-repeat;
+  mask:url(../brand/mark.svg) center/contain no-repeat;
+}
+/* service pages already carry a photograph behind the head, so the mark sits
+   quieter there and lets the image do the work */
+.head-mark--svc{opacity:.72;right:clamp(20px, 5vw, 90px);}
+.svc-head .head-mark{z-index:3;}
+
+@media (max-width:1023.98px){
+  /* below the desktop breakpoint the head-mark would sit under the headline,
+     so it moves to the corner and shrinks rather than fighting the type */
+  .head-mark{top:auto;bottom:18px;translate:none;height:auto;width:clamp(60px, 14vw, 96px);opacity:.55;}
+}
+@media (max-width:600px){
+  .head-mark{display:none;}
+}
+
