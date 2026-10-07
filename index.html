@@ -3,87 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AGC | Advanced General Contractor — Grade One (GC-1) Construction, Ethiopia</title>
-  <meta name="description" content="Seven S ET Trading PLC (AGC) — Grade One (GC-1) General Contractor. We build what lasts. Landmark engineering, multi-billion ETB projects, and record 120-day fast-track delivery.">
-  <meta name="theme-color" content="#0b0f19">
-
-  <!-- Favicon -->
+  <title>Advanced General Contractor (AGC) | Grade One (GC-1) Construction, Ethiopia</title>
+  <meta name="description" content="Seven S ET Trading PLC (AGC) — Grade One (GC-1) Ethiopian General Contractor. Multi-billion ETB turnover, landmark projects, and record-breaking 4-month fast-track delivery.">
+  <meta name="theme-color" content="#09090c">
+  
+  <!-- Favicon & Brand Icons -->
   <link rel="icon" href="assets/brand/logo-header.svg" type="image/svg+xml">
-
-  <!-- Google Fonts: Plus Jakarta Sans (Headings) + Inter (Body) + JetBrains Mono (Technical) -->
+  
+  <!-- Google Fonts: Anton (Display), Syne (Headings), Archivo (Body), JetBrains Mono (Technical) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Accessible Skip Link -->
-  <a href="#hero" class="skip-link">Skip to main content</a>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Ambient Background Accents -->
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+  <div class="ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow-2" aria-hidden="true"></div>
 
   <!-- ============================================================
-       00 — PREMIUM NAVIGATION
+       SITE HEADER
        ============================================================ -->
-  <header class="site-nav" id="siteNav">
-    <div class="container nav-wrap">
-      
-      <a href="#" class="nav-brand" aria-label="Advanced General Contractor Homepage">
-        <img src="assets/brand/logo-header.svg" alt="AGC Logo" class="nav-logo-img">
-        <span class="nav-tier-pill">GC-1 GRADE ONE</span>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="#" class="brand-wrap" aria-label="Advanced General Contractor Homepage">
+        <img src="assets/brand/logo-header.svg" alt="Advanced General Contractor (AGC) Logo" class="brand-logo-img">
+        <span class="brand-tier-badge">GC-1 GRADE ONE</span>
       </a>
 
-      <!-- Desktop Navigation Menu -->
-      <nav aria-label="Primary">
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="#projects" class="nav-link">
-              <span>Projects</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </a>
-            <ul class="nav-dropdown">
-              <li><a href="#projects">Bole Mixed-Use Development</a></li>
-              <li><a href="#projects">Transport Sectoral Head Office</a></li>
-              <li><a href="#projects">Eastern Logistics Park</a></li>
-              <li><a href="#transformations">Before & After Showcase</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="#capabilities" class="nav-link">
-              <span>Capabilities</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </a>
-            <ul class="nav-dropdown">
-              <li><a href="#capabilities">High-Rise Structural</a></li>
-              <li><a href="#capabilities">Curtain Walls & Facades</a></li>
-              <li><a href="#capabilities">Industrial Logistics Parks</a></li>
-              <li><a href="#capabilities">Roads & Infrastructure</a></li>
-              <li><a href="#capabilities">Deep Foundations & Earthworks</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item"><a href="#why-agc" class="nav-link">Why AGC</a></li>
-          <li class="nav-item"><a href="#methodology" class="nav-link">Methodology</a></li>
-          <li class="nav-item"><a href="#insights" class="nav-link">Insights</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#transformations" class="nav-link">Before & After</a></li>
+          <li><a href="#process" class="nav-link">The 4-Month Engine</a></li>
+          <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+          <li><a href="#credentials" class="nav-link">Tender Credentials</a></li>
+          <li><a href="#estimator" class="nav-link">Project Estimator</a></li>
         </ul>
       </nav>
 
-      <!-- Primary Action Button -->
-      <div class="nav-cta-wrap">
-        <a href="#estimator" class="btn btn-primary" id="navStartBtn">
-          <span>START A PROJECT</span>
-          <span class="btn-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
+      <div class="nav-actions">
+        <button type="button" class="currency-toggle" id="currencyToggle" aria-label="Toggle currency">
+          CURRENCY: ETB 🇪🇹
+        </button>
+        <a href="#estimator" class="btn btn-primary" id="navStartProjectBtn">
+          <span>Start Your Project</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
         </a>
-
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open mobile menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -91,511 +67,379 @@
           </svg>
         </button>
       </div>
-
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="modal-overlay" id="mobileDrawer">
-    <div class="case-study-modal" style="max-width:380px;height:100vh;border-radius:0;margin-left:auto;padding:32px;">
-      <button class="modal-close" id="closeMobileDrawer" aria-label="Close menu">&times;</button>
+  <!-- Mobile Navigation Drawer -->
+  <div class="modal-backdrop" id="mobileNavOverlay" style="display:none;">
+    <div class="modal-content" style="max-width:360px;margin-left:auto;height:100vh;border-radius:0;">
+      <button class="modal-close-btn" id="mobileNavClose" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
       <div style="margin-top:40px;display:flex;flex-direction:column;gap:20px;">
-        <span class="nav-tier-pill" style="width:fit-content;">GC-1 GRADE ONE LICENSED</span>
-        <a href="#projects" class="mobile-link" style="font-size:1.25rem;font-weight:700;color:var(--text-dark-title);">Projects</a>
-        <a href="#capabilities" class="mobile-link" style="font-size:1.25rem;font-weight:700;color:var(--text-dark-title);">Capabilities</a>
-        <a href="#why-agc" class="mobile-link" style="font-size:1.25rem;font-weight:700;color:var(--text-dark-title);">Why AGC</a>
-        <a href="#methodology" class="mobile-link" style="font-size:1.25rem;font-weight:700;color:var(--text-dark-title);">Methodology</a>
-        <a href="#transformations" class="mobile-link" style="font-size:1.25rem;font-weight:700;color:var(--text-dark-title);">Before & After</a>
-        <a href="#estimator" class="mobile-link" style="font-size:1.25rem;font-weight:700;color:var(--text-dark-title);">Project Estimator</a>
-        <hr style="border:0;border-top:1px solid var(--color-border-light);margin-block:12px;">
-        <a href="tel:+251974091900" style="font-weight:700;color:var(--color-accent);">Call: +251 97 409 1900</a>
-        <a href="#estimator" class="btn btn-primary" style="text-align:center;">Start a Project →</a>
+        <span class="badge-tag">GC-1 Certified Contractor</span>
+        <a href="#transformations" class="mobile-nav-link" style="color:#fff;text-decoration:none;font-size:1.2rem;font-weight:700;">Before & After</a>
+        <a href="#process" class="mobile-nav-link" style="color:#fff;text-decoration:none;font-size:1.2rem;font-weight:700;">The 4-Month Engine</a>
+        <a href="#capabilities" class="mobile-nav-link" style="color:#fff;text-decoration:none;font-size:1.2rem;font-weight:700;">Capabilities</a>
+        <a href="#credentials" class="mobile-nav-link" style="color:#fff;text-decoration:none;font-size:1.2rem;font-weight:700;">Tender Credentials</a>
+        <a href="#estimator" class="mobile-nav-link" style="color:#fff;text-decoration:none;font-size:1.2rem;font-weight:700;">Project Estimator</a>
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,0.1);margin-block:10px;">
+        <a href="tel:+251974091900" style="color:var(--red-core);text-decoration:none;font-weight:600;">Direct: +251 97 409 1900</a>
+        <a href="https://t.me/advancedgeneralcontractor" target="_blank" class="btn btn-telegram" style="text-align:center;">Chat on Telegram</a>
       </div>
     </div>
   </div>
 
-  <main>
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
 
     <!-- ============================================================
-         01 — CINEMATIC HERO
+         HERO SECTION
          ============================================================ -->
-    <section class="hero-cinema" id="hero">
-      <div class="hero-media-bg">
-        <img src="assets/images/hero-tower.jpg" alt="AGC High-Rise Landmark Engineering" class="hero-bg-img">
-        <div class="hero-gradient-overlay"></div>
-      </div>
-
-      <div class="container hero-content">
-        <h1 class="hero-title">
-          WE BUILD WHAT <span class="highlight-orange">LASTS.</span>
-        </h1>
-        <p class="hero-subheadline">
-          Engineering. Construction. Infrastructure.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-outline-white">
-            <span>View Our Projects</span>
-          </a>
-          <a href="#estimator" class="btn btn-primary">
-            <span>Start a Project</span>
-            <span class="btn-arrow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="hero-proof-line">
-          <span>GC-1 Licensed</span>
-          <span class="dot">&bull;</span>
-          <span>2B+ ETB Projects</span>
-          <span class="dot">&bull;</span>
-          <span>120-Day Fast-Track Delivery</span>
-        </div>
-      </div>
-
-      <div class="hero-scroll-indicator">
-        <span>SCROLL TO EXPLORE</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         02 — TRUST / NUMBERS SECTION (ANIMATED IN VIEWPORT)
-         Clean Off-White Background
-         ============================================================ -->
-    <section class="section-numbers" id="numbers">
-      <div class="container">
-        <div class="numbers-grid">
-          
-          <div class="number-card">
-            <div class="number-val">
-              <span class="animate-num" data-val="120">0</span>
-            </div>
-            <span class="number-unit">DAYS</span>
-            <p class="number-desc">Average Fast-Track Delivery for mega-scale landmark projects.</p>
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            <span>Grade One (GC-1) General Contractor &bull; Addis Ababa</span>
           </div>
 
-          <div class="number-card">
-            <div class="number-val">
-              <span class="animate-num" data-val="2.1" data-decimal="true" data-suffix="B+">0</span>
-            </div>
-            <span class="number-unit">ETB VALUE</span>
-            <p class="number-desc">Annual turnover executed across commercial and public works.</p>
-          </div>
+          <h1 class="hero-title font-display">
+            Built to a <br>
+            <span class="accent-block">New Standard.</span> <br>
+            <span class="text-gradient">Delivered in Months.</span>
+          </h1>
 
-          <div class="number-card">
-            <div class="number-val">
-              <span>24/7</span>
-            </div>
-            <span class="number-unit">EXECUTION</span>
-            <p class="number-desc">Three-shift continuous operations when the schedule demands velocity.</p>
-          </div>
-
-          <div class="number-card">
-            <div class="number-val">
-              <span class="accent">GC-1</span>
-            </div>
-            <span class="number-unit">TIER</span>
-            <p class="number-desc">Top statutory national license held continuously since 2018.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         03 — FEATURED PROJECTS (CINEMATIC SHOWCASES)
-         Pure White Background, Agency-Level Presentation
-         ============================================================ -->
-    <section class="section-projects" id="projects">
-      <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-kicker">Landmark Portfolio</span>
-          <h2 class="section-title">Built Across Ethiopia. Built on Time.</h2>
-          <p class="section-subtitle">
-            Every project represents thousands of tons of structural steel, precision engineering, and a strict commitment to schedule.
+          <p class="hero-desc">
+            Seven S ET Trading PLC, operating under the brand name <strong>Advanced General Contractor (AGC)</strong>. 
+            We engineer, construct, and hand over complex landmark mega-structures across Ethiopia. All types of construction. One uncompromised velocity standard.
           </p>
+
+          <div class="hero-cta-group">
+            <a href="#transformations" class="btn btn-primary" id="heroCtaExplore">
+              <span>Explore Before & After</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            
+            <a href="#process" class="btn btn-outline" id="heroCtaEngine">
+              <span>How We Deliver in 4 Months</span>
+            </a>
+
+            <a href="tel:+251974091900" class="hero-direct-call" aria-label="Direct phone call">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+                <path d="M5 3h4l2 5-3 2a13 13 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/>
+              </svg>
+              <span>+251 97 409 1900</span>
+            </a>
+          </div>
+
+          <!-- Key Stat Ribbon -->
+          <div class="hero-stat-ribbon">
+            <div class="hero-stat-card">
+              <span class="hero-stat-num">2.12B+</span>
+              <span class="hero-stat-label">ETB Annual Turnover</span>
+            </div>
+            <div class="hero-stat-card">
+              <span class="hero-stat-num">1.5B</span>
+              <span class="hero-stat-label">Megenagna Flagship Value</span>
+            </div>
+            <div class="hero-stat-card">
+              <span class="hero-stat-num">4 MOS</span>
+              <span class="hero-stat-label">Record Turnaround Time</span>
+            </div>
+          </div>
         </div>
 
-        <div class="projects-flow">
-          
-          <!-- Project 01: Bole Mixed-Use Development -->
-          <article class="project-showcase">
-            <div class="project-img-box open-case-study" data-project="bole">
-              <img src="assets/images/bole-mixed-use.jpg" alt="Bole Mixed-Use Development Addis Ababa" loading="lazy">
-              <div class="project-img-overlay"></div>
-              <div class="project-img-badge">COMMERCIAL MEGA PROJECT</div>
-              <div class="project-img-hover-cta">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </div>
-
-            <div class="project-info">
-              <div class="project-meta-top">
-                <span class="project-loc">Bole &bull; Addis Ababa</span>
-              </div>
-              <h3 class="project-title">Bole Mixed-Use Commercial Development</h3>
-              <p class="project-desc">
-                High-rise commercial headquarters featuring luxury ground-level retail, post-tensioned wide-span floor plates, and acoustic-laminated thermal curtain walls.
-              </p>
-
-              <div class="project-spec-strip">
-                <div class="project-spec-item">
-                  <span class="spec-label">Project Valuation</span>
-                  <span class="spec-val accent">1.5B ETB</span>
-                </div>
-                <div class="project-spec-item">
-                  <span class="spec-label">Execution Speed</span>
-                  <span class="spec-val">120 Days</span>
-                </div>
-                <div class="project-spec-item">
-                  <span class="spec-label">Classification</span>
-                  <span class="spec-val">Mixed-Use Tower</span>
-                </div>
-              </div>
-
+        <!-- Hero Visual Showcase -->
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;"></canvas>
+            <img src="assets/images/hero-tower.jpg" alt="AGC High-Rise Landmark Facade Engineering Addis Ababa" loading="eager">
+            <div class="hero-visual-badge">
               <div>
-                <a href="#" class="btn btn-outline-dark open-case-study" data-project="bole">
-                  <span>Explore Project</span>
-                  <span class="btn-arrow">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </span>
-                </a>
+                <h4 class="hvb-title">Transport Sectoral Head Office</h4>
+                <p class="hvb-subtitle">Megenagna, Addis Ababa &bull; Curtain Wall Facade</p>
               </div>
+              <span class="hvb-tag">100% HANDED OVER</span>
             </div>
-          </article>
-
-          <!-- Project 02: Transport Sectoral Head Office Tower -->
-          <article class="project-showcase reverse">
-            <div class="project-img-box open-case-study" data-project="megenagna">
-              <img src="assets/images/after-megenagna.jpg" alt="Transport Sectoral Head Office Tower Megenagna" loading="lazy">
-              <div class="project-img-overlay"></div>
-              <div class="project-img-badge">FLAGSHIP GOVERNMENT MEGA PROJECT</div>
-              <div class="project-img-hover-cta">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </div>
-
-            <div class="project-info">
-              <div class="project-meta-top">
-                <span class="project-loc">Megenagna &bull; Addis Ababa</span>
-              </div>
-              <h3 class="project-title">Transport Sectoral Head Office Tower</h3>
-              <p class="project-desc">
-                Complete architectural enclosure and engineering delivery of a 14-story institutional tower. Delivered under the strictest public timeline in Addis Ababa's history.
-              </p>
-
-              <div class="project-spec-strip">
-                <div class="project-spec-item">
-                  <span class="spec-label">Project Valuation</span>
-                  <span class="spec-val accent">1.5B ETB</span>
-                </div>
-                <div class="project-spec-item">
-                  <span class="spec-label">Execution Speed</span>
-                  <span class="spec-val">4 Months</span>
-                </div>
-                <div class="project-spec-item">
-                  <span class="spec-label">Client Authority</span>
-                  <span class="spec-val">City Administration</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="#" class="btn btn-outline-dark open-case-study" data-project="megenagna">
-                  <span>Explore Project</span>
-                  <span class="btn-arrow">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 03: Eastern Logistics & Industrial Park -->
-          <article class="project-showcase">
-            <div class="project-img-box open-case-study" data-project="industrial">
-              <img src="assets/images/industrial-hub.jpg" alt="Eastern Logistics and Industrial Park" loading="lazy">
-              <div class="project-img-overlay"></div>
-              <div class="project-img-badge">HEAVY INDUSTRIAL FACILITY</div>
-              <div class="project-img-hover-cta">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </div>
-
-            <div class="project-info">
-              <div class="project-meta-top">
-                <span class="project-loc">Bole Lemi Zone &bull; Industrial Corridor</span>
-              </div>
-              <h3 class="project-title">Eastern Logistics & Industrial Park</h3>
-              <p class="project-desc">
-                24,000 m² of unobstructed column-free logistics warehousing, laser-screed concrete heavy flooring, and automated high-bay docking bays.
-              </p>
-
-              <div class="project-spec-strip">
-                <div class="project-spec-item">
-                  <span class="spec-label">Project Valuation</span>
-                  <span class="spec-val accent">850M ETB</span>
-                </div>
-                <div class="project-spec-item">
-                  <span class="spec-label">Execution Speed</span>
-                  <span class="spec-val">90 Days</span>
-                </div>
-                <div class="project-spec-item">
-                  <span class="spec-label">Clear Span</span>
-                  <span class="spec-val">60 Meters</span>
-                </div>
-              </div>
-
-              <div>
-                <a href="#" class="btn btn-outline-dark open-case-study" data-project="industrial">
-                  <span>Explore Project</span>
-                  <span class="btn-arrow">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </article>
-
+          </div>
         </div>
-
       </div>
     </section>
 
     <!-- ============================================================
-         04 — WHY AGC (COMPETITIVE ADVANTAGE)
-         Off-White Background
+         PROOF STRIP & CLIENT TRUST
          ============================================================ -->
-    <section class="section-why" id="why-agc">
+    <section class="proof-strip" aria-label="Selected Clients and Institutional Partners">
+      <div class="container proof-strip-inner">
+        <span class="proof-strip-label">Institutional & Commercial Partners:</span>
+        <div class="client-logo-list">
+          <span class="client-partner-name">Addis Ababa City Administration</span>
+          <span class="client-partner-name">&bull;</span>
+          <span class="client-partner-name">Gift Real Estate</span>
+          <span class="client-partner-name">&bull;</span>
+          <span class="client-partner-name">Temer Properties</span>
+          <span class="client-partner-name">&bull;</span>
+          <span class="client-partner-name">Intel Motion</span>
+          <span class="client-partner-name">&bull;</span>
+          <span class="client-partner-name">African Leadership Excellence Academy</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 1: INTERACTIVE BEFORE & AFTER SHOWCASE
+         ============================================================ -->
+    <section class="section-before-after" id="transformations">
       <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-kicker">The AGC Difference</span>
-          <h2 class="section-title">Built on Infrastructure, Not Excuses.</h2>
-          <p class="section-subtitle">
-            Most construction delays stem from equipment shortages, subcontracting layers, and broken material pipelines. AGC controls the entire stack.
+        <div class="section-header">
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            <span>Proof Through Velocity</span>
+          </div>
+          <h2 class="section-title font-display">
+            The Transformation <span class="text-red">Studio</span>
+          </h2>
+          <p class="section-desc">
+            Many contractors show architectural renderings. AGC presents verified site reality: taking complex, high-risk concrete superstructures and handing over completed landmark towers in record four-month cycles.
           </p>
         </div>
 
-        <div class="why-grid">
+        <!-- Comparison Studio Widget -->
+        <div class="comparison-studio">
           
-          <div class="why-card">
-            <span class="why-card-num">01 / FLEET CAPITAL</span>
-            <h3 class="why-card-title">Owned Heavy Machinery Fleet</h3>
-            <p class="why-card-text">
-              We own and operate our concrete batch plants, boom pumps, excavators, and tower cranes. We never lose weeks waiting on third-party equipment rental waitlists.
-            </p>
+          <!-- Project Switcher & Quick Scrub Bar -->
+          <div class="comparison-tabs">
+            <div class="tab-buttons">
+              <button class="comp-tab-btn active" data-project="megenagna" id="tabMegenagna">
+                Megenagna Transport Tower
+              </button>
+              <button class="comp-tab-btn" data-project="industrial" id="tabIndustrial">
+                Bole Lemi Logistics Park
+              </button>
+              <button class="comp-tab-btn" data-project="headquarters" id="tabHq">
+                Kazanchis Corporate HQ
+              </button>
+            </div>
+
+            <div class="comp-quick-toggles">
+              <span style="font-size:0.75rem;color:var(--text-dim);font-family:var(--font-mono);margin-right:4px;">VIEW STAGE:</span>
+              <button class="quick-toggle-btn" data-pos="0">Day 0 (Before)</button>
+              <button class="quick-toggle-btn active" data-pos="50">Split View (50/50)</button>
+              <button class="quick-toggle-btn" data-pos="100">Day 120 (Handover)</button>
+            </div>
           </div>
 
-          <div class="why-card">
-            <span class="why-card-num">02 / CONTINUOUS PRODUCTION</span>
-            <h3 class="why-card-title">24/7 Three-Shift Velocity</h3>
-            <p class="why-card-text">
-              When a project demands aggressive delivery, our sites run on seamless 8-hour shift rotations with dedicated night illumination, supervisor marshals, and on-site engineering labs.
-            </p>
+          <!-- Split-Screen Viewport -->
+          <div class="comparison-viewport" id="compViewport">
+            
+            <!-- Layer 1: BEFORE (Background) -->
+            <div class="comp-img-layer layer-before">
+              <img src="assets/images/before-megenagna.jpg" alt="Construction Stage Before AGC Execution" class="inner-img" id="compImgBefore">
+            </div>
+
+            <!-- Layer 2: AFTER (Foreground with clip width) -->
+            <div class="comp-img-layer layer-after" id="layerAfter">
+              <img src="assets/images/after-megenagna.jpg" alt="Completed Curtain Wall High-Rise After AGC Execution" class="inner-img" id="compImgAfter">
+            </div>
+
+            <!-- Draggable Divider Handle -->
+            <div class="comparison-handle" id="compHandle">
+              <div class="handle-button" aria-label="Drag to compare before and after">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                  <polyline points="9 18 3 12 9 6" style="display:none;"></polyline>
+                  <polyline points="19 18 19 6" style="display:none;"></polyline>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:-8px;">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Technical Stage Badges Overlay -->
+            <div class="tag-overlay tag-overlay-left">
+              <div class="tag-overlay-status">&bull; INITIAL SITE CONDITION</div>
+              <div class="tag-overlay-desc" id="compTagBefore">Month 0: Raw Foundation & Substructure</div>
+            </div>
+
+            <div class="tag-overlay tag-overlay-right">
+              <div class="tag-overlay-status">&bull; COMPLETED COMMISSION</div>
+              <div class="tag-overlay-desc" id="compTagAfter">Month 4: 100% Commissioned & Handed Over</div>
+            </div>
           </div>
 
-          <div class="why-card">
-            <span class="why-card-num">03 / PROCUREMENT ENGINE</span>
-            <h3 class="why-card-title">Direct Factory Supply Chain</h3>
-            <p class="why-card-text">
-              Direct allocation with primary global mills and glass manufacturers. Critical-path curtain wall profiles and structural steel are customs-locked before breaking ground.
-            </p>
-          </div>
+          <!-- Comparison Metadata Bar -->
+          <div class="comparison-meta-bar">
+            <div class="meta-project-title">
+              <h4 id="compMetaTitle">Transport Sectoral Head Office Tower</h4>
+              <p id="compMetaLocation">Megenagna, Addis Ababa</p>
+            </div>
 
-          <div class="why-card">
-            <span class="why-card-num">04 / ZERO-DEFECT QUALITY</span>
-            <h3 class="why-card-title">ISO & Statutory Quality Gates</h3>
-            <p class="why-card-text">
-              Every cubic meter of concrete undergoes slump and cube compressive testing. Ultrasonic inspection on structural welds ensures zero compromise under rapid pace.
-            </p>
+            <div class="meta-specs">
+              <div class="meta-spec-item">
+                <span class="meta-spec-label">Project Valuation</span>
+                <span class="meta-spec-value text-red" id="compMetaBudget">1.5 Billion ETB</span>
+              </div>
+              <div class="meta-spec-item">
+                <span class="meta-spec-label">Total Execution Speed</span>
+                <span class="meta-spec-value" id="compMetaDays">120 Calendar Days</span>
+              </div>
+              <div class="meta-spec-item">
+                <span class="meta-spec-label">Engineering Scope</span>
+                <span class="meta-spec-value" id="compMetaScope">Curtain Walls / Sunbreakers / Facade</span>
+              </div>
+              <div class="meta-spec-item">
+                <span class="meta-spec-label">Safety Compliance</span>
+                <span class="meta-spec-value" id="compMetaSafety">Zero Lost-Time Incidents</span>
+              </div>
+            </div>
+
+            <div class="meta-cta-box">
+              <a href="#process" class="btn btn-outline" style="font-size:0.85rem;padding:9px 16px;">
+                <span>View Timeline Breakdown</span>
+              </a>
+            </div>
           </div>
 
         </div>
-
       </div>
     </section>
 
     <!-- ============================================================
-         05 — CAPABILITIES MATRIX
-         Pure White Background
+         SECTION 2: THE 4-MONTH VELOCITY ENGINE (THE PROCESS)
          ============================================================ -->
-    <section class="section-capabilities" id="capabilities">
+    <section class="section-process" id="process">
       <div class="container">
         
-        <div class="section-header-center">
-          <span class="section-kicker">Grade One Scope</span>
-          <h2 class="section-title">Engineering at Every Scale.</h2>
-          <p class="section-subtitle">
-            Unlimited statutory bidding ceiling in Ethiopia. Fully certified across all general contracting disciplines.
-          </p>
+        <div class="process-header-box">
+          <div>
+            <div class="badge-tag">
+              <span class="pulse-dot"></span>
+              <span>Proprietary Fast-Track Methodology</span>
+            </div>
+            <h2 class="section-title font-display">
+              The 4-Month <span class="text-red">Delivery Engine</span>
+            </h2>
+            <p class="section-desc" style="max-width:560px;">
+              How does AGC execute multi-billion ETB projects in 120 days when traditional contractors quote 2 to 3 years? Here is the exact phase-by-phase operational architecture.
+            </p>
+          </div>
+
+          <!-- Speed Benchmark Card -->
+          <div class="process-speed-benchmark">
+            <div class="benchmark-side">
+              <span class="benchmark-label">Standard Industry Timeline</span>
+              <span class="benchmark-val" style="color:var(--text-muted);">24 – 36 Months</span>
+            </div>
+            <div class="benchmark-side agc">
+              <span class="benchmark-label">AGC Fast-Track Standard</span>
+              <span class="benchmark-val fast">4 Months (120 Days)</span>
+            </div>
+          </div>
         </div>
 
-        <div class="cap-cards-grid">
-          
-          <div class="cap-item-card">
-            <div class="cap-card-header">
-              <span class="cap-card-tag">01 &bull; SUPERSTRUCTURE</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-            <h3 class="cap-item-title">Structural Construction</h3>
-            <p class="cap-item-desc">
-              Reinforced concrete high-rise frameworks, post-tensioned slabs, seismic-resistant core walls, and heavy commercial developments.
-            </p>
-            <div class="cap-item-footer">STATUTORY HEIGHT: UNLIMITED (GC-1)</div>
-          </div>
-
-          <div class="cap-item-card">
-            <div class="cap-card-header">
-              <span class="cap-card-tag">02 &bull; ENCLOSURES</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-            <h3 class="cap-item-title">Curtain Walls & Facades</h3>
-            <p class="cap-item-desc">
-              Unitized thermal-break glass facades, aerodynamic vertical sunbreaker fins, structural silicone glazing, and architectural aluminum cladding.
-            </p>
-            <div class="cap-item-footer">FLAGSHIP: MEGENAGNA MEGA PROJECT</div>
-          </div>
-
-          <div class="cap-item-card">
-            <div class="cap-card-header">
-              <span class="cap-card-tag">03 &bull; INDUSTRIAL</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-            <h3 class="cap-item-title">Industrial Logistics Parks</h3>
-            <p class="cap-item-desc">
-              Wide-span pre-engineered steel warehouses, high-load industrial floors, manufacturing plants, and distribution centers.
-            </p>
-            <div class="cap-item-footer">CLEAR SPANS UP TO 60 METERS</div>
-          </div>
-
-          <div class="cap-item-card">
-            <div class="cap-card-header">
-              <span class="cap-card-tag">04 &bull; CIVIL INFRASTRUCTURE</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-            <h3 class="cap-item-title">Roads & Civil Works</h3>
-            <p class="cap-item-desc">
-              Asphalt highways, reinforced concrete municipal pavements, stormwater culverts, bridges, and mass transit terminals.
-            </p>
-            <div class="cap-item-footer">PARTNER: ADDIS ABABA CITY ADMIN</div>
-          </div>
-
-          <div class="cap-item-card">
-            <div class="cap-card-header">
-              <span class="cap-card-tag">05 &bull; DEEP SUBSTRUCTURE</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-            <h3 class="cap-item-title">Deep Foundations & Earthworks</h3>
-            <p class="cap-item-desc">
-              Mass rock excavation, contiguous pile shoring, ground anchors, micropiling, and multi-level basement earth retention.
-            </p>
-            <div class="cap-item-footer">FLEET: OWNED HEAVY EXCAVATORS</div>
-          </div>
-
-          <div class="cap-item-card">
-            <div class="cap-card-header">
-              <span class="cap-card-tag">06 &bull; INTERIORS</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-            <h3 class="cap-item-title">Turnkey Luxury Fit-Out</h3>
-            <p class="cap-item-desc">
-              Class-A executive boardrooms, acoustic ceilings, high-traffic commercial finishes, and integrated electromechanical lighting.
-            </p>
-            <div class="cap-item-footer">GRADE: LUXURY CORPORATE INTERIOR</div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         06 — CONSTRUCTION METHODOLOGY (THE 4-MONTH ENGINE)
-         Deep Charcoal Dark Contrast Section
-         ============================================================ -->
-    <section class="section-methodology" id="methodology">
-      <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-kicker on-dark">Operational Architecture</span>
-          <h2 class="section-title on-dark">The 4-Month Delivery Engine.</h2>
-          <p class="section-subtitle on-dark">
-            How AGC completes 1.5B ETB high-rise developments in 120 days when traditional contractors quote 2 to 3 years.
-          </p>
-        </div>
-
-        <!-- Stepper Navigation -->
-        <div class="method-stepper">
-          <button class="method-step-btn active" id="mStep1">
-            <span class="step-btn-days">DAYS 01 – 25</span>
-            <span class="step-btn-title">01 / BIM & Supply Lock</span>
+        <!-- Interactive Phase Stepper Nav -->
+        <div class="process-stepper-nav" role="tablist">
+          <button class="step-nav-btn active" role="tab" id="stepBtn1">
+            <span class="step-nav-days">PHASE 01 &bull; DAYS 01–25</span>
+            <span class="step-nav-title">BIM & Supply Chain Lock</span>
           </button>
-          <button class="method-step-btn" id="mStep2">
-            <span class="step-btn-days">DAYS 26 – 65</span>
-            <span class="step-btn-title">02 / 24/7 Substructure</span>
+          <button class="step-nav-btn" role="tab" id="stepBtn2">
+            <span class="step-nav-days">PHASE 02 &bull; DAYS 26–65</span>
+            <span class="step-nav-title">24/7 Substructure & Frame</span>
           </button>
-          <button class="method-step-btn" id="mStep3">
-            <span class="step-btn-days">DAYS 66 – 95</span>
-            <span class="step-btn-title">03 / Facade Enclosure</span>
+          <button class="step-nav-btn" role="tab" id="stepBtn3">
+            <span class="step-nav-days">PHASE 03 &bull; DAYS 66–95</span>
+            <span class="step-nav-title">Unitized Curtain Wall Enclosure</span>
           </button>
-          <button class="method-step-btn" id="mStep4">
-            <span class="step-btn-days">DAYS 96 – 120</span>
-            <span class="step-btn-title">04 / Zero-Snag Handover</span>
+          <button class="step-nav-btn" role="tab" id="stepBtn4">
+            <span class="step-nav-days">PHASE 04 &bull; DAYS 96–120</span>
+            <span class="step-nav-title">Zero-Snag MEP & Handover</span>
           </button>
         </div>
 
-        <!-- Interactive Phase Panel -->
-        <div class="method-panel">
-          <div class="method-content-side">
-            <h3 class="method-detail-title" id="methodTitle">BIM Pre-Engineering & Supply Chain Lock</h3>
-            <p class="method-detail-desc" id="methodDesc">
+        <!-- Active Stage Content Card -->
+        <div class="process-display-card">
+          <div class="process-stage-info">
+            <div class="stage-badge-row">
+              <span class="stage-num-tag" id="stageNumTag">PHASE 01</span>
+              <span class="stage-window-tag" id="stageWindowTag">DAYS 01 – 25</span>
+            </div>
+
+            <h3 id="stageTitle">BIM Pre-Engineering & Supply Chain Lock</h3>
+
+            <p class="process-stage-desc" id="stageDesc">
               Before earth is displaced, AGC deploys 3D Building Information Modeling (BIM) to stress-test architectural conflicts. Crucially, critical path materials (high-spec structural steel, tempered curtain-wall glazing, specialized elevators) are procured and customs-cleared upfront.
             </p>
 
-            <ul class="method-checklist" id="methodChecklist">
+            <ul class="stage-checklist" id="stageChecklist">
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
+                  <path d="M20 6L9 17l-5-5"/>
                 </svg>
                 <span>Digital clash-detection between civil, MEP, and structural engineering</span>
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
+                  <path d="M20 6L9 17l-5-5"/>
                 </svg>
                 <span>Direct manufacturer allocation for facade glass & aluminum extrusions</span>
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
+                  <path d="M20 6L9 17l-5-5"/>
                 </svg>
                 <span>3D logistical simulation for continuous site material ingress in Addis Ababa</span>
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
+                  <path d="M20 6L9 17l-5-5"/>
                 </svg>
                 <span>Local regulatory and municipal building permit sign-offs</span>
               </li>
             </ul>
           </div>
 
-          <div class="method-stats-box">
-            <div class="method-stat-row">
-              <div class="ms-label">Phase Time Window</div>
-              <div class="ms-val accent" id="methodDaysSpan">Days 01 – 25</div>
+          <!-- Process Execution Capabilities Widget -->
+          <div class="process-pillars-widget">
+            <div style="border-bottom:1px solid var(--border-subtle);padding-bottom:12px;margin-bottom:8px;">
+              <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;">THE VELOCITY ADVANTAGE:</span>
+              <p style="font-size:0.95rem;font-weight:700;color:var(--red-core);margin-top:4px;" id="stageSpeedAdv">
+                Prevents supply shortages that delay 80% of standard local builds.
+              </p>
             </div>
-            <div class="method-stat-row">
-              <div class="ms-label">Labor & Shift Architecture</div>
-              <div class="ms-val" id="methodShiftModel">Engineering Taskforce</div>
+
+            <div class="pillar-item">
+              <div class="pillar-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </div>
+              <div class="pillar-body">
+                <h5>Owned Machinery Fleet</h5>
+                <p>Self-owned concrete batch plants, boom pumps, and heavy cranes—zero reliance on equipment rental waitlists.</p>
+              </div>
             </div>
-            <div class="method-stat-row">
-              <div class="ms-label">Velocity Impact</div>
-              <div class="ms-val" style="font-size:16px;line-height:1.4;" id="methodSpeedFact">
-                Eliminates the material import delays that stall 80% of local construction.
+
+            <div class="pillar-item">
+              <div class="pillar-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="pillar-body">
+                <h5>Three-Shift 24/7 Rotations</h5>
+                <p>Triple work shifts with dedicated site supervision and illuminated night-shift engineering.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <div class="pillar-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="pillar-body">
+                <h5>ISO & GC-1 Quality Gates</h5>
+                <p>Daily compressive slump tests, ultrasonic weld checks, and certified structural safety standards.</p>
               </div>
             </div>
           </div>
@@ -605,563 +449,407 @@
     </section>
 
     <!-- ============================================================
-         07 — BEFORE / AFTER TRANSFORMATION STUDIO
-         Deep Contrast Dark Section
+         SECTION 3: GRADE ONE CAPABILITIES MATRIX
          ============================================================ -->
-    <section class="section-before-after" id="transformations">
+    <section class="section-capabilities" id="capabilities">
       <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-kicker on-dark">Visual Verification</span>
-          <h2 class="section-title on-dark">The Transformation Studio.</h2>
-          <p class="section-subtitle on-dark">
-            Drag the divider to see the raw structural frame evolve into a fully commissioned landmark tower.
+        <div class="section-header">
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            <span>Comprehensive Civil & Commercial Disciplines</span>
+          </div>
+          <h2 class="section-title font-display">
+            All Types of Construction. <br>
+            <span class="text-red">One Standard.</span>
+          </h2>
+          <p class="section-desc">
+            As a licensed Grade One (GC-1) General Contractor, AGC possesses unlimited statutory bidding ceiling in Ethiopia, handling multi-billion Birr public and private works.
           </p>
         </div>
 
-        <div class="comp-shell">
+        <div class="cap-grid">
           
-          <div class="comp-toolbar">
-            <div class="comp-project-tabs">
-              <button class="comp-tab active" data-project="megenagna">Megenagna Transport Tower</button>
-              <button class="comp-tab" data-project="bole">Bole Commercial Center</button>
-              <button class="comp-tab" data-project="industrial">Bole Lemi Logistics Hub</button>
+          <div class="cap-card">
+            <div class="cap-top">
+              <span class="cap-num">01 / STRUCTURAL</span>
+              <svg class="cap-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </div>
+            <h3 class="cap-title">Structural Construction</h3>
+            <p class="cap-desc">Reinforced concrete high-rise frameworks, seismic-rated post-tensioned slabs, and heavy commercial load-bearing superstructures.</p>
+            <div class="cap-metrics-tag">CAPACITY: UNLIMITED GC-1 LICENSED HEIGHT</div>
+          </div>
 
-            <div class="comp-scrub-controls">
-              <span style="font-size:12px;color:var(--text-light-muted);font-family:var(--font-mono);">VIEW STAGE:</span>
-              <button class="scrub-btn" data-pos="0">Day 0 (Raw Frame)</button>
-              <button class="scrub-btn active" data-pos="50">Split (50/50)</button>
-              <button class="scrub-btn" data-pos="100">Day 120 (Handover)</button>
+          <div class="cap-card">
+            <div class="cap-top">
+              <span class="cap-num">02 / ENCLOSURES</span>
+              <svg class="cap-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+            <h3 class="cap-title">Curtain Walls & Facades</h3>
+            <p class="cap-desc">Unitized architectural glass curtain walls, thermally broken double glazing, vertical sunbreaker fins, and aluminum composite cladding.</p>
+            <div class="cap-metrics-tag">FLAGSHIP: MEGENAGNA MEGA PROJECT</div>
+          </div>
+
+          <div class="cap-card">
+            <div class="cap-top">
+              <span class="cap-num">03 / INDUSTRIAL</span>
+              <svg class="cap-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+            <h3 class="cap-title">Industrial & Logistics Parks</h3>
+            <p class="cap-desc">Large-span pre-engineered steel warehouses, heavy manufacturing factory floorings, and automated distribution terminals.</p>
+            <div class="cap-metrics-tag">CLEAR SPAN: UP TO 60 METERS</div>
+          </div>
+
+          <div class="cap-card">
+            <div class="cap-top">
+              <span class="cap-num">04 / CIVIL WORKS</span>
+              <svg class="cap-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+            <h3 class="cap-title">Roads & Civil Infrastructure</h3>
+            <p class="cap-desc">Asphalt highways, concrete arterial pavements, stormwater drainage culverts, bridges, and municipal transport hubs.</p>
+            <div class="cap-metrics-tag">CLIENT: ADDIS ABABA CITY ADMIN</div>
+          </div>
+
+          <div class="cap-card">
+            <div class="cap-top">
+              <span class="cap-num">05 / SUBSTRUCTURE</span>
+              <svg class="cap-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+            <h3 class="cap-title">Earthworks & Deep Foundations</h3>
+            <p class="cap-desc">Mass site excavation, deep micropiling, sheet pile shoring, rock stabilization, and high-volume basement retention.</p>
+            <div class="cap-metrics-tag">FLEET: OWNED HEAVY EXCAVATORS</div>
+          </div>
+
+          <div class="cap-card">
+            <div class="cap-top">
+              <span class="cap-num">06 / INTERIORS</span>
+              <svg class="cap-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+            <h3 class="cap-title">Turnkey Interiors & Fit-Out</h3>
+            <p class="cap-desc">Class-A corporate executive suites, acoustic ceilings, high-traffic commercial flooring, and integrated electromechanical lighting.</p>
+            <div class="cap-metrics-tag">STANDARD: LUXURY COMMERCIAL GRADE</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4: VERIFIED CREDENTIAL & TENDER VAULT
+         ============================================================ -->
+    <section class="section-credentials" id="credentials">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            <span>Verified Public & Commercial Records</span>
+          </div>
+          <h2 class="section-title font-display">
+            On Record. <span class="text-red">Proven by Delivery.</span>
+          </h2>
+          <p class="section-desc">
+            Direct commendations from municipal city authorities, international joint ventures, and leading private real estate developers in Ethiopia.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              "Seven S ET Trading PLC has consistently demonstrated exemplary engineering professionalism, technical competence, and an unwavering commitment to safety and rapid milestone fulfillment on high-stakes projects."
+            </blockquote>
+            <div class="testimonial-author-box">
+              <div class="author-badge-icon">IM</div>
+              <div class="author-meta">
+                <h5>Mrs. Demitu Feyisa</h5>
+                <p>General Manager, Intel Motion</p>
+              </div>
             </div>
           </div>
 
-          <div class="comp-canvas-area" id="compCanvas">
-            <!-- Layer 1: BEFORE -->
-            <div class="comp-layer before">
-              <img src="assets/images/before-megenagna.jpg" alt="Construction Stage Before AGC" id="compImgBefore">
-            </div>
-
-            <!-- Layer 2: AFTER -->
-            <div class="comp-layer after" id="compLayerAfter">
-              <img src="assets/images/after-megenagna.jpg" alt="Completed High-Rise After AGC" id="compImgAfter">
-            </div>
-
-            <!-- Divider -->
-            <div class="comp-divider" id="compDivider">
-              <div class="comp-handle-circle">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:-8px;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <div class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              "The contractor verified full adherence to strict Ethiopian municipal building standards, exhibiting superior structural execution and an agile turnaround schedule on our central transport infrastructure."
+            </blockquote>
+            <div class="testimonial-author-box">
+              <div class="author-badge-icon">AA</div>
+              <div class="author-meta">
+                <h5>Design & Construction Works Bureau</h5>
+                <p>Addis Ababa City Administration</p>
               </div>
-            </div>
-
-            <div class="comp-tag left">
-              <div class="comp-tag-status">&bull; INITIAL SITE CONDITION</div>
-              <div class="comp-tag-title" id="compTagBefore">Month 0: Stalled Skeletal Frame</div>
-            </div>
-
-            <div class="comp-tag right">
-              <div class="comp-tag-status">&bull; COMPLETED COMMISSION</div>
-              <div class="comp-tag-title" id="compTagAfter">Month 4: 100% Commissioned Tower</div>
             </div>
           </div>
 
-          <div class="comp-footer-bar">
-            <div>
-              <h4 id="compTitle" style="color:#fff;font-size:18px;margin-bottom:2px;">Transport Sectoral Head Office Tower</h4>
-              <p id="compLocation" style="color:var(--text-light-muted);font-size:13px;">Megenagna, Addis Ababa</p>
-            </div>
-
-            <div style="display:flex;gap:24px;flex-wrap:wrap;">
-              <div>
-                <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-light-muted);display:block;">VALUATION</span>
-                <strong id="compMetaVal" style="color:var(--color-accent);font-size:16px;">1.5 Billion ETB</strong>
+          <div class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              "AGC's owned machinery capacity and round-the-clock site mobilization eliminated the customary scheduling bottlenecks typical in large-scale residential and mixed-use commercial construction."
+            </blockquote>
+            <div class="testimonial-author-box">
+              <div class="author-badge-icon">GR</div>
+              <div class="author-meta">
+                <h5>Executive Project Directorate</h5>
+                <p>Gift Real Estate Development</p>
               </div>
-              <div>
-                <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-light-muted);display:block;">TURNAROUND</span>
-                <strong id="compMetaDays" style="color:#fff;font-size:16px;">120 Calendar Days</strong>
-              </div>
-              <div>
-                <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-light-muted);display:block;">SCOPE</span>
-                <strong id="compMetaScope" style="color:#fff;font-size:16px;">Curtain Wall & Sunbreakers</strong>
-              </div>
-            </div>
-
-            <div style="text-align:right;">
-              <a href="#estimator" class="btn btn-outline-white" style="padding:10px 18px;font-size:13px;">
-                Calculate Your Timeline
-              </a>
             </div>
           </div>
 
+        </div>
+
+        <!-- Tender Vault Callout Bar -->
+        <div class="tender-vault-bar">
+          <div class="vault-text">
+            <h4>Verified GC-1 Tender Documentation & Reference Pack</h4>
+            <p>Access our certified Grade-1 license registration, tax compliance, bank references, and 7 official client letters.</p>
+          </div>
+          <a href="#" class="btn btn-primary open-tender-modal" id="openVaultBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Review Tender Credentials</span>
+          </a>
         </div>
 
       </div>
     </section>
 
     <!-- ============================================================
-         08 — GUIDED PROJECT ESTIMATOR EXPERIENCE (ITEM 9)
-         Clean Off-White Background
+         SECTION 5: INTERACTIVE PROJECT ESTIMATOR & FAST-TRACK RFP
          ============================================================ -->
     <section class="section-estimator" id="estimator">
       <div class="container">
         
-        <div class="section-header-center">
-          <span class="section-kicker">Interactive Feasibility</span>
-          <h2 class="section-title">Project Estimator & Feasibility Engine.</h2>
-          <p class="section-subtitle">
-            Configure your project parameters to generate an instant timeline, investment snapshot, and execution plan.
+        <div class="section-header">
+          <div class="badge-tag">
+            <span class="pulse-dot"></span>
+            <span>Direct Project Feasibility Calculator</span>
+          </div>
+          <h2 class="section-title font-display">
+            Plan Your Build. <span class="text-red">Get Instant Specs.</span>
+          </h2>
+          <p class="section-desc">
+            Specify your project scale and engineering requirements below to calculate indicative timelines, team allocation, and initiate priority review with AGC engineering leadership.
           </p>
         </div>
 
-        <div class="estimator-walkthrough">
+        <div class="estimator-box">
           
-          <!-- Guided Form Steps -->
-          <div class="estimator-steps-flow">
+          <!-- Estimator Inputs -->
+          <form class="estimator-form" onsubmit="event.preventDefault();">
             
-            <!-- Step 01: Project Type -->
-            <div class="est-step">
-              <div class="est-step-header">
-                <span class="est-step-num">01</span>
-                <h4 class="est-step-title">Project Type</h4>
-              </div>
-              <div class="est-chip-options">
-                <button type="button" class="est-chip chip-type active" data-type="commercial">Commercial High-Rise</button>
-                <button type="button" class="est-chip chip-type" data-type="residential">Mixed-Use Residential</button>
-                <button type="button" class="est-chip chip-type" data-type="industrial">Industrial & Logistics</button>
-                <button type="button" class="est-chip chip-type" data-type="infrastructure">Civil Infrastructure</button>
-              </div>
+            <div class="form-group">
+              <label for="estimatorType" class="form-label">Project Classification</label>
+              <select id="estimatorType" class="form-control">
+                <option value="highrise" selected>Commercial High-Rise / Mixed-Use Tower</option>
+                <option value="facade">Curtain Wall & Facade Modernization</option>
+                <option value="industrial">Heavy Industrial & Logistics Park</option>
+                <option value="infrastructure">Road, Earthworks & Civil Infrastructure</option>
+              </select>
             </div>
 
-            <!-- Step 02: Project Size -->
-            <div class="est-step">
-              <div class="est-step-header">
-                <span class="est-step-num">02</span>
-                <h4 class="est-step-title">Project Size</h4>
-              </div>
-              <div class="est-range-box">
-                <div class="est-range-top">
-                  <span style="font-size:14px;color:var(--text-dark-muted);">Gross Floor Area (GFA)</span>
-                  <span class="est-range-val" id="estSizeDisplay">10,000 m²</span>
+            <div class="form-group">
+              <div class="form-range-wrap">
+                <div class="range-display-row">
+                  <label for="estimatorScale" class="form-label">Gross Floor Area (GFA)</label>
+                  <span class="range-display-val" id="scaleValDisplay">12,500 m² GFA</span>
                 </div>
-                <input type="range" class="range-input" id="estSizeSlider" min="2000" max="40000" step="1000" value="10000">
-                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-dark-dim);font-family:var(--font-mono);">
+                <input type="range" id="estimatorScale" class="custom-range-slider" min="2000" max="40000" step="500" value="12500">
+                <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text-dim);font-family:var(--font-mono);">
                   <span>2,000 m²</span>
                   <span>40,000 m²</span>
                 </div>
               </div>
             </div>
 
-            <!-- Step 03: Location -->
-            <div class="est-step">
-              <div class="est-step-header">
-                <span class="est-step-num">03</span>
-                <h4 class="est-step-title">Location</h4>
+            <div class="form-group">
+              <label for="estimatorLocation" class="form-label">Project Site Location</label>
+              <input type="text" id="estimatorLocation" class="form-control" value="Addis Ababa (Bole / Kazanchis / Megenagna Corridor)">
+            </div>
+
+            <div class="form-group">
+              <label for="estimatorNotes" class="form-label">Specific Velocity Requirement</label>
+              <textarea id="estimatorNotes" class="form-control" rows="3" placeholder="E.g., Stalled project requiring 120-day recovery and curtain-wall fit-out..."></textarea>
+            </div>
+
+          </form>
+
+          <!-- Estimator Real-Time Results & Direct Chat -->
+          <div class="estimator-result-card">
+            
+            <div class="result-header">
+              <h4>Estimated Engineering Allocation</h4>
+              <p>Calculated based on AGC GC-1 accelerated 24/7 delivery benchmarks.</p>
+            </div>
+
+            <div class="result-metrics">
+              <div class="result-metric-row">
+                <span class="metric-label">Projected Delivery Schedule:</span>
+                <span class="metric-val text-red" id="estDuration">120 Days (4 Months)</span>
               </div>
-              <div class="est-chip-options">
-                <button type="button" class="est-chip chip-loc active" data-loc="Addis Ababa">Addis Ababa Core</button>
-                <button type="button" class="est-chip chip-loc" data-loc="Bole Lemi">Bole Lemi Zone</button>
-                <button type="button" class="est-chip chip-loc" data-loc="Regional Hub">Regional Corridor</button>
+              <div class="result-metric-row">
+                <span class="metric-label">Estimated Budget Scale:</span>
+                <span class="metric-val" id="estBudget">0.53 Billion ETB</span>
+              </div>
+              <div class="result-metric-row">
+                <span class="metric-label">Shift Deployment Architecture:</span>
+                <span class="metric-val" id="estShift">3-Shift 24/7 Continuous</span>
+              </div>
+              <div class="result-metric-row">
+                <span class="metric-label">Allocated Engineering Crew:</span>
+                <span class="metric-val" id="estTeam">~225 Dedicated Engineers</span>
               </div>
             </div>
 
-            <!-- Step 04: Target Completion -->
-            <div class="est-step">
-              <div class="est-step-header">
-                <span class="est-step-num">04</span>
-                <h4 class="est-step-title">Target Completion</h4>
-              </div>
-              <div class="est-chip-options">
-                <button type="button" class="est-chip chip-target active" data-target="120days">120-Day Fast-Track (3 Shifts)</button>
-                <button type="button" class="est-chip chip-target" data-target="standard">Standard Schedule</button>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Project Snapshot Card -->
-          <div class="snapshot-card">
-            <div>
-              <h4 class="snapshot-title">Your Project Snapshot</h4>
-              <p class="snapshot-subtitle">Calculated based on AGC GC-1 accelerated delivery benchmarks.</p>
-
-              <div class="snapshot-rows">
-                <div class="snap-row">
-                  <span class="snap-label">Estimated Investment:</span>
-                  <span class="snap-val accent" id="snapInvestment">420M ETB</span>
-                </div>
-                <div class="snap-row">
-                  <span class="snap-label">Estimated Timeline:</span>
-                  <span class="snap-val" id="snapTimeline">120 Days</span>
-                </div>
-                <div class="snap-row">
-                  <span class="snap-label">Recommended Execution:</span>
-                  <span class="snap-val" style="font-size:16px;" id="snapExecution">3 Shifts / 24 Hours</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="snapshot-channel-links">
-              <a href="#" target="_blank" class="btn btn-primary" id="snapProposalBtn" style="width:100%;">
-                <span>Request Detailed Proposal →</span>
+            <div class="direct-channel-btns">
+              <a href="#" target="_blank" class="btn btn-telegram" id="btnTenderTelegram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.52 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06-.01.19-.03.38z"/>
+                </svg>
+                <span>Send Feasibility Request via Telegram</span>
               </a>
-              <a href="#" target="_blank" class="btn btn-outline-white" id="snapTelegramBtn" style="width:100%;font-size:13px;padding:11px;">
-                <span>Discuss on Telegram</span>
+
+              <a href="#" target="_blank" class="btn btn-whatsapp" id="btnTenderWhatsapp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 18.15c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.54.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.3z"/>
+                </svg>
+                <span>Direct WhatsApp Engineering Line</span>
               </a>
             </div>
+
           </div>
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- ============================================================
-         09 — CERTIFICATIONS / TENDER CREDENTIALS
-         Pure White Background
-         ============================================================ -->
-    <section class="section-credentials" id="credentials">
-      <div class="container credentials-container">
-        
-        <div class="cred-info-side">
-          <span class="section-kicker">Verified Credentials</span>
-          <h3>Grade One Certified. Unlimited Bidding Ceiling.</h3>
-          <p>
-            Advanced General Contractor (Seven S ET Trading PLC) holds the highest general contracting classification granted by the Ethiopian Ministry of Urban Development & Infrastructure.
-          </p>
-
-          <ul class="cred-check-list">
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>GC-1 Grade One General Contractor License (Held continuously since 2018)</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Unlimited Statutory Bidding Ceiling for Public & Private Tenders</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Seven Verified Reference Letters on File from Municipal & Commercial Clients</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Comprehensive Bank Guarantee & Performance Bonding Capacity</span>
-            </li>
-          </ul>
-
-          <a href="mailto:info@advancedgeneralcontractor.com?subject=Tender%20Credentials%20Pack%20Request" class="btn btn-outline-dark">
-            <span>Request Official Tender Pack (PDF)</span>
-            <span class="btn-arrow">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="cred-document-preview-card">
-          <div class="doc-stamp-header">
-            <div>
-              <strong style="color:var(--text-dark-title);font-size:16px;display:block;">FEDERAL DEMOCRATIC REPUBLIC OF ETHIOPIA</strong>
-              <span style="font-size:12px;color:var(--text-dark-muted);">MINISTRY OF URBAN DEVELOPMENT & INFRASTRUCTURE</span>
-            </div>
-            <span class="stamp-badge">VERIFIED GC-1</span>
-          </div>
-
-          <div class="doc-data-grid">
-            <div class="doc-data-item">
-              <span class="label">LEGAL ENTITY</span>
-              <span class="val">Seven S ET Trading PLC</span>
-            </div>
-            <div class="doc-data-item">
-              <span class="label">TRADING BRAND</span>
-              <span class="val">Advanced General Contractor</span>
-            </div>
-            <div class="doc-data-item">
-              <span class="label">CLASSIFICATION</span>
-              <span class="val" style="color:var(--color-accent);">GC-1 (Grade One)</span>
-            </div>
-            <div class="doc-data-item">
-              <span class="label">BIDDING CEILING</span>
-              <span class="val">Unlimited National Tier</span>
-            </div>
-          </div>
-
-          <div style="background:#fff;border:1px solid var(--color-border-light);border-radius:var(--radius-sm);padding:14px;font-size:13px;color:var(--text-dark-muted);">
-            <strong>Reference Letters on Record:</strong> Addis Ababa City Administration, Gift Real Estate, Intel Motion PLC, Temer Properties, African Leadership Excellence Academy.
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         10 — CLIENT TESTIMONIALS
-         Off-White Background
-         ============================================================ -->
-    <section class="section-testimonials" id="testimonials">
-      <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-kicker">Client References</span>
-          <h2 class="section-title">On Record. Proven by Delivery.</h2>
-          <p class="section-subtitle">
-            What institutional directors and commercial property syndicates state about working with AGC.
-          </p>
-        </div>
-
-        <div class="testimonials-grid">
-          
-          <div class="test-card">
-            <p class="test-quote">
-              "Seven S ET Trading PLC has consistently demonstrated exemplary engineering professionalism, technical competence, and an unwavering commitment to safety and rapid milestone fulfillment on high-stakes projects."
-            </p>
-            <div class="test-author-row">
-              <div class="test-avatar">IM</div>
-              <div>
-                <h5 class="test-name">Mrs. Demitu Feyisa</h5>
-                <span class="test-role">General Manager, Intel Motion</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="test-card">
-            <p class="test-quote">
-              "The contractor verified full adherence to strict Ethiopian municipal building standards, exhibiting superior structural execution and an agile turnaround schedule on our central transport infrastructure."
-            </p>
-            <div class="test-author-row">
-              <div class="test-avatar">AA</div>
-              <div>
-                <h5 class="test-name">Design & Construction Works Bureau</h5>
-                <span class="test-role">Addis Ababa City Administration</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="test-card">
-            <p class="test-quote">
-              "AGC's owned machinery capacity and round-the-clock site mobilization eliminated the customary scheduling bottlenecks typical in large-scale residential and mixed-use commercial construction."
-            </p>
-            <div class="test-author-row">
-              <div class="test-avatar">GR</div>
-              <div>
-                <h5 class="test-name">Executive Project Directorate</h5>
-                <span class="test-role">Gift Real Estate Development</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         11 — INSIGHTS & NEWS
-         Clean Pure White Background
-         ============================================================ -->
-    <section class="section-insights" id="insights">
-      <div class="container">
-        
-        <div class="section-header-center">
-          <span class="section-kicker">Engineering Insights</span>
-          <h2 class="section-title">Knowledge from the Field.</h2>
-          <p class="section-subtitle">
-            Technical perspectives on high-speed construction, facade engineering, and infrastructure delivery across East Africa.
-          </p>
-        </div>
-
-        <div class="insights-grid">
-          
-          <article class="insight-card">
-            <div class="insight-body">
-              <span class="insight-date">OCTOBER 2026 &bull; CASE ANALYSIS</span>
-              <h4 class="insight-title">Compressing 14-Story Curtain Wall Installation to 30 Days</h4>
-              <p class="insight-text">
-                How mast-climbing work platforms and off-site pre-assembly allowed AGC to seal the Megenagna tower facade while internal concrete floors were still curing.
-              </p>
-            </div>
-          </article>
-
-          <article class="insight-card">
-            <div class="insight-body">
-              <span class="insight-date">SEPTEMBER 2026 &bull; LOGISTICS</span>
-              <h4 class="insight-title">Overcoming Material Bottlenecks in Addis Ababa</h4>
-              <p class="insight-text">
-                Why securing direct factory allocations for structural steel and double glazing is the single most critical factor in guaranteeing fixed handover dates.
-              </p>
-            </div>
-          </article>
-
-          <article class="insight-card">
-            <div class="insight-body">
-              <span class="insight-date">AUGUST 2026 &bull; ENGINEERING</span>
-              <h4 class="insight-title">The Economics of 24/7 Construction in Commercial Real Estate</h4>
-              <p class="insight-text">
-                How delivering projects in 4 months instead of 24 months saves developers hundreds of millions of Birr in debt interest and yields immediate tenant cash flow.
-              </p>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         12 — STRONG FINAL CTA
-         Deep Navy Charcoal High-Impact Section
-         ============================================================ -->
-    <section class="section-cta-strong" id="contact">
-      <div class="container cta-shell">
-        <span class="section-kicker on-dark" style="justify-content:center;">Ready to Build</span>
-        <h2 class="cta-big-title">
-          WE BUILD WHAT LASTS.<br>
-          <span class="highlight-orange">LET’S BUILD YOURS.</span>
-        </h2>
-        <p class="cta-subtext">
-          Tell us what you are planning. Our senior engineering directorate will review your drawings and provide an accelerated feasibility analysis within 48 hours.
-        </p>
-
-        <div class="cta-btns-group">
-          <a href="#estimator" class="btn btn-primary" style="padding:16px 36px;font-size:16px;">
-            <span>Start a Project Proposal</span>
-            <span class="btn-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </span>
-          </a>
-          <a href="tel:+251974091900" class="btn btn-outline-white" style="padding:16px 32px;font-size:16px;">
-            <span>Call +251 97 409 1900</span>
-          </a>
-        </div>
       </div>
     </section>
 
   </main>
 
   <!-- ============================================================
-       13 — PREMIUM FOOTER
-       Deep Charcoal Surface
+       TENDER CREDENTIALS MODAL
        ============================================================ -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-main-grid">
-        
-        <div class="footer-brand-info">
-          <img src="assets/brand/logo-group.svg" alt="AGC Group Logo" style="height:44px;width:auto;display:block;">
-          <p>
-            Seven S ET Trading PLC, trading under the brand name <strong>Advanced General Contractor (AGC)</strong>. Grade One (GC-1) licensed general contractor delivering landmark high-rise and infrastructure developments across Ethiopia.
-          </p>
-        </div>
+  <div class="modal-backdrop" id="tenderModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
 
-        <div>
-          <h5 class="footer-col-title">Navigation</h5>
-          <ul class="footer-link-list">
-            <li><a href="#projects">Featured Projects</a></li>
-            <li><a href="#capabilities">Engineering Capabilities</a></li>
-            <li><a href="#why-agc">Why AGC Advantage</a></li>
-            <li><a href="#methodology">The 4-Month Engine</a></li>
-            <li><a href="#transformations">Before & After Studio</a></li>
-            <li><a href="#estimator">Project Estimator</a></li>
-          </ul>
-        </div>
+      <span class="badge-tag">OFFICIAL CORPORATE DOSSIER</span>
+      <h3 style="font-size:1.8rem;margin-bottom:12px;font-family:var(--font-display);">
+        AGC Tender & License <span class="text-red">Verification</span>
+      </h3>
+      <p style="color:var(--text-muted);font-size:0.92rem;margin-bottom:24px;">
+        Registered corporate credentials for Seven S ET Trading PLC, trading under the brand Advanced General Contractor (AGC).
+      </p>
 
-        <div>
-          <h5 class="footer-col-title">Capabilities</h5>
-          <ul class="footer-link-list">
-            <li><a href="#capabilities">Commercial High-Rise</a></li>
-            <li><a href="#capabilities">Curtain Walls & Facades</a></li>
-            <li><a href="#capabilities">Industrial Logistics Parks</a></li>
-            <li><a href="#capabilities">Roads & Civil Works</a></li>
-            <li><a href="#capabilities">Deep Earthworks & Piling</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h5 class="footer-col-title">Headquarters</h5>
-          <address class="footer-contact-address">
-            Bole Matemiya, City View Addis Building<br>
-            2nd Floor, Addis Ababa, Ethiopia<br><br>
-            <a href="tel:+251974091900" style="color:#ffffff;font-weight:700;">+251 97 409 1900</a><br>
-            <a href="mailto:info@advancedgeneralcontractor.com" style="color:var(--text-light-muted);">info@advancedgeneralcontractor.com</a>
-          </address>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom-row">
-        <span>&copy; 2026 Seven S ET Trading PLC &bull; Advanced General Contractor (AGC)</span>
-        <span>Grade One (GC-1) License &bull; Unlimited Statutory Bidding Tier Held Since 2018</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ============================================================
-       AGENCY-LEVEL PROJECT CASE STUDY MODAL (ITEM 4)
-       ============================================================ -->
-  <div class="modal-overlay" id="projectCaseStudyModal">
-    <div class="case-study-modal">
-      <button class="modal-close" id="closeCaseStudyBtn" aria-label="Close Case Study">&times;</button>
-      
-      <img src="assets/images/bole-mixed-use.jpg" alt="Case Study Hero" class="modal-hero-img" id="csModalImg">
-      
-      <div class="modal-content-inner">
-        <span class="section-kicker" id="csModalSubtitle">Project Case Study</span>
-        <h3 id="csModalTitle" style="font-size:32px;color:var(--text-dark-title);margin-bottom:20px;">
-          Bole Mixed-Use Commercial Development
-        </h3>
-
-        <!-- Key Project Data Strip -->
-        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:16px;background:var(--color-bg-light);border:1px solid var(--color-border-light);border-radius:var(--radius-md);padding:20px;margin-bottom:32px;">
+      <div style="background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:20px;margin-bottom:20px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:0.85rem;">
           <div>
-            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dark-dim);display:block;">PROJECT VALUATION</span>
-            <strong id="csModalValuation" style="color:var(--color-accent);font-size:18px;">1.5 Billion ETB</strong>
+            <span style="color:var(--text-dim);font-family:var(--font-mono);display:block;">LICENSE CLASSIFICATION:</span>
+            <strong style="color:#fff;font-size:1rem;">GC-1 (Grade One General Contractor)</strong>
           </div>
           <div>
-            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dark-dim);display:block;">DELIVERY SPEED</span>
-            <strong id="csModalTimeline" style="color:var(--text-dark-title);font-size:18px;">120 Days</strong>
+            <span style="color:var(--text-dim);font-family:var(--font-mono);display:block;">ISSUING AUTHORITY:</span>
+            <strong style="color:#fff;">Ministry of Urban Dev & Infrastructure</strong>
           </div>
           <div>
-            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dark-dim);display:block;">CLIENT SECTOR</span>
-            <strong id="csModalClient" style="color:var(--text-dark-title);font-size:18px;">Commercial Syndicate</strong>
+            <span style="color:var(--text-dim);font-family:var(--font-mono);display:block;">GRADE ONE STATUS HELD:</span>
+            <strong style="color:var(--green-accent);">Since 2018 (Continuous Renewal)</strong>
           </div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:24px;font-size:15px;line-height:1.7;">
           <div>
-            <h4 style="font-size:18px;color:var(--text-dark-title);margin-bottom:8px;">The Challenge</h4>
-            <p id="csModalChallenge" style="color:var(--text-dark-body);"></p>
+            <span style="color:var(--text-dim);font-family:var(--font-mono);display:block;">STATUTORY BIDDING CEILING:</span>
+            <strong style="color:#fff;">Unlimited Bidding Tier</strong>
           </div>
-
-          <div>
-            <h4 style="font-size:18px;color:var(--text-dark-title);margin-bottom:8px;">Our Approach</h4>
-            <p id="csModalApproach" style="color:var(--text-dark-body);"></p>
-          </div>
-
-          <div>
-            <h4 style="font-size:18px;color:var(--text-dark-title);margin-bottom:8px;">Engineering & Construction</h4>
-            <p id="csModalEngineering" style="color:var(--text-dark-body);margin-bottom:8px;"></p>
-            <p id="csModalConstruction" style="color:var(--text-dark-body);"></p>
-          </div>
-
-          <div>
-            <h4 style="font-size:18px;color:var(--text-dark-title);margin-bottom:8px;">Results & Impact</h4>
-            <p id="csModalResults" style="color:var(--text-dark-body);font-weight:600;"></p>
-          </div>
-        </div>
-
-        <div style="margin-top:36px;border-top:1px solid var(--color-border-light);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-          <a href="#estimator" class="btn btn-primary" onclick="document.getElementById('projectCaseStudyModal').classList.remove('open');">
-            <span>Calculate Your Similar Build →</span>
-          </a>
-          <a href="tel:+251974091900" class="btn btn-outline-dark">
-            <span>Speak with Project Engineer</span>
-          </a>
         </div>
       </div>
 
+      <h4 style="font-size:1.05rem;margin-bottom:12px;">Verified Reference Letters on Record:</h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:0.88rem;color:var(--text-muted);margin-bottom:28px;">
+        <li style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--green-accent);">✓</span>
+          <strong>Addis Ababa City Administration</strong> — Transport Sectoral Mega Project Completion Certificate
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--green-accent);">✓</span>
+          <strong>Intel Motion PLC</strong> — Commercial Engineering & Site Execution Commendation
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--green-accent);">✓</span>
+          <strong>Gift Real Estate</strong> — High-Volume Structural Works & Timeline Compliance Letter
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--green-accent);">✓</span>
+          <strong>Temer Properties</strong> — Turnkey Commercial Structural Handover
+        </li>
+      </ul>
+
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="mailto:info@advancedgeneralcontractor.com?subject=Tender%20Credentials%20Request" class="btn btn-primary" style="flex:1;">
+          Request Stamped Reference PDF
+        </a>
+        <a href="tel:+251974091900" class="btn btn-outline">
+          Call Legal/Tender Desk
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      
+      <div class="footer-brand">
+        <img src="assets/brand/logo-group.svg" alt="Advanced General Contractor Group Logo" style="height:44px;width:auto;display:block;">
+        <p>
+          Seven S ET Trading PLC, trading as Advanced General Contractor (AGC). A Grade One (GC-1) licensed general contractor delivering landmark infrastructure and high-rise projects across Ethiopia.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Quick Navigation</h5>
+        <ul class="footer-links">
+          <li><a href="#transformations">Before & After Studio</a></li>
+          <li><a href="#process">The 4-Month Engine</a></li>
+          <li><a href="#capabilities">Capabilities Matrix</a></li>
+          <li><a href="#credentials">Tender Credentials</a></li>
+          <li><a href="#estimator">Project Estimator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Capabilities</h5>
+        <ul class="footer-links">
+          <li><a href="#capabilities">Curtain Walls & Facades</a></li>
+          <li><a href="#capabilities">Structural Construction</a></li>
+          <li><a href="#capabilities">Industrial Logistics Parks</a></li>
+          <li><a href="#capabilities">Roads & Civil Works</a></li>
+          <li><a href="#capabilities">Earthworks & Deep Foundations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Headquarters</h5>
+        <address class="footer-address">
+          Bole Matemiya, City View Addis Building<br>
+          2nd Floor, Addis Ababa, Ethiopia<br><br>
+          <a href="tel:+251974091900" style="color:#fff;font-weight:600;">+251 97 409 1900</a><br>
+          <a href="mailto:info@advancedgeneralcontractor.com" style="color:var(--text-muted);">info@advancedgeneralcontractor.com</a>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <span>&copy; 2026 Seven S ET Trading PLC &bull; Advanced General Contractor (AGC)</span>
+      <span>Grade One (GC-1) General Contractor License &bull; Held Continuously Since 2018</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script src="app.js"></script>
 </body>
 </html>
