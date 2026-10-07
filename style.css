@@ -205,38 +205,39 @@ h1, h2, h3, h4 {
    ============================================================ */
 .site-header {
   position: fixed;
-  top: 18px;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  padding-inline: clamp(16px, 3.5vw, 40px);
+  padding: 12px clamp(12px, 3vw, 32px);
   pointer-events: none;
-  transition: top var(--transition-smooth);
+  transition: padding var(--transition-smooth), background var(--transition-smooth);
 }
 
 .site-header.scrolled {
-  top: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .nav-frame {
   pointer-events: auto;
   max-width: var(--container-max);
   margin-inline: auto;
-  background: rgba(14, 14, 18, 0.85);
+  background: rgba(14, 14, 18, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 8px 12px 8px 24px;
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 10px 14px 10px 20px;
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
   transition: all var(--transition-smooth);
 }
 
 .site-header.scrolled .nav-frame {
-  background: rgba(10, 10, 14, 0.94);
-  border-color: rgba(255, 51, 31, 0.35);
-  box-shadow: 0 20px 42px -8px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(255, 51, 31, 0.2);
-  padding: 6px 10px 6px 20px;
+  background: rgba(10, 10, 14, 0.96);
+  border-color: rgba(255, 51, 31, 0.3);
+  box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.8), 0 0 20px -4px rgba(255, 51, 31, 0.18);
+  padding: 8px 12px 8px 18px;
 }
 
 .nav-container {
@@ -276,8 +277,10 @@ h1, h2, h3, h4 {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 1.6vw, 24px);
+  gap: clamp(8px, 1.4vw, 22px);
   list-style: none;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .nav-link {
@@ -412,7 +415,7 @@ h1, h2, h3, h4 {
    HERO SECTION
    ============================================================ */
 .hero-section {
-  padding-top: clamp(120px, 15vh, 180px);
+  padding-top: clamp(100px, 14vh, 160px);
   padding-bottom: clamp(60px, 8vh, 100px);
   position: relative;
   overflow: hidden;
@@ -1588,6 +1591,11 @@ h1, h2, h3, h4 {
 /* ============================================================
    RESPONSIVE DESIGN BREAKPOINTS
    ============================================================ */
+/* ============================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ============================================================ */
+
+/* Tablet landscape */
 @media (max-width: 1100px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -1613,39 +1621,116 @@ h1, h2, h3, h4 {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .cap-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
+/* Tablet portrait — switch to hamburger */
 @media (max-width: 1080px) {
   .nav-links {
     display: none;
   }
+  .currency-toggle {
+    display: none;
+  }
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .process-stepper-nav {
     grid-template-columns: 1fr 1fr;
   }
 }
 
+/* Hide the GC-1 badge on narrow screens to save space */
+@media (max-width: 680px) {
+  .brand-tier-badge {
+    display: none;
+  }
+  .hero-stat-ribbon {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    padding: 8px 12px;
+  }
+
+  .nav-frame {
+    padding: 8px 10px 8px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .brand-logo-img {
+    height: 30px;
+  }
+
+  .btn.btn-primary#navStartProjectBtn span {
+    display: none;
+  }
+
+  .btn.btn-primary#navStartProjectBtn svg {
+    margin: 0;
+  }
+
+  .btn.btn-primary#navStartProjectBtn {
+    padding: 9px 12px;
+    gap: 0;
+    min-width: 38px;
+  }
+
   .process-stepper-nav {
     grid-template-columns: 1fr;
   }
+
   .hero-stat-ribbon {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
+
   .footer-grid {
     grid-template-columns: 1fr;
   }
+
   .comparison-viewport {
     aspect-ratio: 4 / 3;
-    min-height: 380px;
+    min-height: 300px;
   }
+
   .tag-overlay {
     padding: 6px 10px;
   }
+
   .tag-overlay-desc {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .cap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    gap: 12px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 9vw, 3.2rem);
+  }
+
+  .meta-specs {
+    gap: 14px;
+  }
+
+  .container {
+    padding-inline: 16px;
   }
 }
