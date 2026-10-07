@@ -201,33 +201,49 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION (FLOATING ARCHITECTURAL FRAME)
    ============================================================ */
 .site-header {
   position: fixed;
-  top: 0;
+  top: 18px;
   left: 0;
   right: 0;
-  z-index: 100;
-  padding-block: 18px;
-  background: transparent;
-  transition: all 0.3s var(--transition-smooth);
+  z-index: 1000;
+  padding-inline: clamp(16px, 3.5vw, 40px);
+  pointer-events: none;
+  transition: top var(--transition-smooth);
 }
 
 .site-header.scrolled {
-  background: var(--bg-glass-heavy);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
-  padding-block: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  top: 10px;
+}
+
+.nav-frame {
+  pointer-events: auto;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  background: rgba(14, 14, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 8px 12px 8px 24px;
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: all var(--transition-smooth);
+}
+
+.site-header.scrolled .nav-frame {
+  background: rgba(10, 10, 14, 0.94);
+  border-color: rgba(255, 51, 31, 0.35);
+  box-shadow: 0 20px 42px -8px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(255, 51, 31, 0.2);
+  padding: 6px 10px 6px 20px;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(16px, 2vw, 32px);
+  gap: clamp(14px, 1.8vw, 28px);
 }
 
 .brand-wrap {
