@@ -53,6 +53,13 @@ const capabilities = [
   },
 ];
 
+const filters = [
+  { key: 'all', label: 'All Disciplines', count: '06' },
+  { key: 'superstructure', label: 'High-Rise & Facades', count: '03' },
+  { key: 'industrial', label: 'Industrial & Warehousing', count: '01' },
+  { key: 'infrastructure', label: 'Civil & Earthworks', count: '02' },
+];
+
 export default function CapabilitiesSection() {
   const [activeFilter, setActiveFilter] = useState('all');
 
@@ -78,37 +85,24 @@ export default function CapabilitiesSection() {
           </p>
         </div>
 
-        <div className="cap-filter-bar">
-          <button
-            type="button"
-            className={`cap-filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('all')}
-          >
-            All Disciplines ({capabilities.length.toString().padStart(2, '0')})
-          </button>
-          <button
-            type="button"
-            className={`cap-filter-btn ${activeFilter === 'superstructure' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('superstructure')}
-          >
-            High-Rise & Facades
-          </button>
-          <button
-            type="button"
-            className={`cap-filter-btn ${activeFilter === 'industrial' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('industrial')}
-          >
-            Industrial & Warehousing
-          </button>
-          <button
-            type="button"
-            className={`cap-filter-btn ${activeFilter === 'infrastructure' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('infrastructure')}
-          >
-            Civil & Earthworks
-          </button>
+        {/* Filter Navigation Bar */}
+        <div className="cap-filter-bar" role="tablist" aria-label="Capabilities filter tabs">
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              type="button"
+              role="tab"
+              aria-selected={activeFilter === f.key}
+              className={`cap-filter-btn ${activeFilter === f.key ? 'active' : ''}`}
+              onClick={() => setActiveFilter(f.key)}
+            >
+              <span>{f.label}</span>
+              <span className="cap-filter-count">{f.count}</span>
+            </button>
+          ))}
         </div>
 
+        {/* Capabilities Grid */}
         <div className="cap-grid">
           {filteredCapabilities.map((item) => (
             <div key={item.id} className="cap-card" data-category={item.category}>
@@ -122,6 +116,7 @@ export default function CapabilitiesSection() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
