@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
+  initScrollSpy();
   initBeforeAfterSlider();
   initProcessStepper();
   initProjectEstimator();
@@ -27,6 +28,42 @@ function initStickyHeader() {
       header.classList.remove('scrolled');
     }
   }, { passive: true });
+}
+
+/* ============================================================
+   1b. SCROLL SPY — Active nav link highlighting
+   ============================================================ */
+function initScrollSpy() {
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  if (!navLinks.length) return;
+
+  // Map each link to its target section
+  const sections = Array.from(navLinks).map(link => {
+    const id = link.getAttribute('href').replace('#', '');
+    return { link, section: document.getElementById(id) };
+  }).filter(({ section }) => section !== null);
+
+  function onScroll() {
+    const scrollMid = window.scrollY + window.innerHeight * 0.35;
+
+    let activeSection = null;
+    for (const { section } of sections) {
+      if (section.offsetTop <= scrollMid) {
+        activeSection = section;
+      }
+    }
+
+    sections.forEach(({ link, section }) => {
+      if (section === activeSection) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // run on load
 }
 
 /* ============================================================
@@ -397,6 +434,11 @@ function initModals() {
 
   if (!modalBackdrop) return;
 
+  function closeModal() {
+    modalBackdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   openBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -406,48 +448,130 @@ function initModals() {
   });
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      modalBackdrop.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+    closeBtn.addEventListener('click', closeModal);
   }
 
   modalBackdrop.addEventListener('click', (e) => {
-    if (e.target === modalBackdrop) {
-      modalBackdrop.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    if (e.target === modalBackdrop) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeModal();
   });
 }
 
 /* ============================================================
-   6. MOBILE NAVIGATION OVERLAY
+   6. MOBILE NAVIGATION OVERLAY (DYNAMICALLY BUILT)
    ============================================================ */
 function initMobileMenu() {
   const menuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNav = document.getElementById('mobileNavOverlay');
-  const closeBtn = document.getElementById('mobileNavClose');
-  const links = document.querySelectorAll('.mobile-nav-link');
+  if (!menuBtn) return;
 
-  if (!menuBtn || !mobileNav) return;
+  // ── Read nav links from the header so the drawer stays in sync ──
+  const headerLinks = document.querySelectorAll('.nav-links .nav-link');
+  const navItems = Array.from(headerLinks).map(a => ({
+    href: a.getAttribute('href'),
+    text: a.textContent.trim()
+  }));
 
-  menuBtn.addEventListener('click', () => {
-    mobileNav.classList.add('open');
-    document.body.style.overflow = 'hidden';
+  // ── Build the drawer DOM ──
+  const overlay = document.createElement('div');
+  overlay.id = 'mobileNavOverlay';
+  overlay.className = 'modal-backdrop';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Mobile navigation');
+
+  const panel = document.createElement('div');
+  panel.className = 'modal-content';
+  panel.style.maxWidth = '360px';
+  panel.style.width = '100%';
+
+  // Close button
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'modal-close-btn';
+  closeBtn.id = 'mobileNavClose';
+  closeBtn.setAttribute('aria-label', 'Close menu');
+  closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+  panel.appendChild(closeBtn);
+
+  // Inner wrapper
+  const inner = document.createElement('div');
+  inner.style.cssText = 'margin-top:52px;display:flex;flex-direction:column;gap:6px;';
+
+  // Badge
+  const badge = document.createElement('span');
+  badge.className = 'badge-tag';
+  badge.style.marginBottom = '20px';
+  badge.textContent = 'GC-1 Certified Contractor';
+  inner.appendChild(badge);
+
+  // Nav links
+  navItems.forEach(item => {
+    const a = document.createElement('a');
+    a.href = item.href;
+    a.className = 'mobile-nav-link';
+    a.textContent = item.text;
+    inner.appendChild(a);
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+  // Divider
+  const hr = document.createElement('hr');
+  hr.style.cssText = 'border:0;border-top:1px solid rgba(255,255,255,0.1);margin-block:16px;';
+  inner.appendChild(hr);
+
+  // Phone link
+  const phoneLink = document.createElement('a');
+  phoneLink.href = 'tel:+251974091900';
+  phoneLink.style.cssText = 'color:var(--red-core);text-decoration:none;font-weight:600;font-size:0.95rem;';
+  phoneLink.textContent = '\u2706 +251 97 409 1900';
+  inner.appendChild(phoneLink);
+
+  // Telegram button
+  const tgLink = document.createElement('a');
+  tgLink.href = 'https://t.me/advancedgeneralcontractor';
+  tgLink.target = '_blank';
+  tgLink.className = 'btn btn-telegram';
+  tgLink.style.cssText = 'text-align:center;margin-top:8px;';
+  tgLink.textContent = 'Chat on Telegram';
+  inner.appendChild(tgLink);
+
+  panel.appendChild(inner);
+  overlay.appendChild(panel);
+
+  // Inject into the page right after the header
+  const header = document.querySelector('.site-header');
+  header.insertAdjacentElement('afterend', overlay);
+
+  // ── Event handlers ──
+  function openMenu() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    menuBtn.setAttribute('aria-expanded', 'true');
   }
 
-  links.forEach(l => {
-    l.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+  function closeMenu() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+
+  // Close on backdrop click
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeMenu();
+  });
+
+  // Close on nav link click
+  overlay.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
   });
 }
 
